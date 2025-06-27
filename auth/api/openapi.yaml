@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  description: This is the simple auth manager fastapi sub application. This API is
+    only available if the auth manager used in the Airflow environment is simple auth
+    manager. This sub application provides the login form for users to log in.
+  title: Simple auth manager sub application
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /auth/token:
+    get:
+      description: Create a token with no credentials only if ``simple_auth_manager_all_admins``
+        is True.
+      operationId: create_token_all_admins
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+          description: Successful Response
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Forbidden
+      summary: Create Token All Admins
+      tags:
+      - SimpleAuthManagerLogin
+    post:
+      description: Authenticate the user.
+      operationId: create_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+          description: Successful Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Unauthorized
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+          description: Validation Error
+      summary: Create Token
+      tags:
+      - SimpleAuthManagerLogin
+  /auth/token/login:
+    get:
+      description: Login the user with no credentials.
+      operationId: login_all_admins
+      responses:
+        "307":
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Forbidden
+      summary: Login All Admins
+      tags:
+      - SimpleAuthManagerLogin
+  /auth/token/cli:
+    post:
+      description: Authenticate the user for the CLI.
+      operationId: create_token_cli
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+          description: Successful Response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPExceptionResponse"
+          description: Unauthorized
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+          description: Validation Error
+      summary: Create Token Cli
+      tags:
+      - SimpleAuthManagerLogin
+components:
+  schemas:
+    HTTPExceptionResponse:
+      description: HTTPException Model used for error response.
+      example:
+        detail: Detail
+      properties:
+        detail:
+          $ref: "#/components/schemas/Detail"
+      required:
+      - detail
+      title: HTTPExceptionResponse
+    HTTPValidationError:
+      example:
+        detail:
+        - msg: msg
+          loc:
+          - ValidationError_loc_inner
+          - ValidationError_loc_inner
+          type: type
+        - msg: msg
+          loc:
+          - ValidationError_loc_inner
+          - ValidationError_loc_inner
+          type: type
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: array
+      title: HTTPValidationError
+    LoginBody:
+      additionalProperties: true
+      description: Login serializer for post bodies.
+      example:
+        password: password
+        username: username
+      properties:
+        username:
+          title: Username
+          type: string
+        password:
+          title: Password
+          type: string
+      required:
+      - password
+      - username
+      title: LoginBody
+    LoginResponse:
+      description: Login serializer for responses.
+      example:
+        access_token: access_token
+      properties:
+        access_token:
+          title: Access Token
+          type: string
+      required:
+      - access_token
+      title: LoginResponse
+    ValidationError:
+      example:
+        msg: msg
+        loc:
+        - ValidationError_loc_inner
+        - ValidationError_loc_inner
+        type: type
+      properties:
+        loc:
+          items:
+            $ref: "#/components/schemas/ValidationError_loc_inner"
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Detail:
+      anyOf:
+      - type: string
+      - additionalProperties: true
+        type: object
+      title: Detail
+    ValidationError_loc_inner:
+      anyOf:
+      - type: string
+      - type: integer
