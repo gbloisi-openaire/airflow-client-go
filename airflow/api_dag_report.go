@@ -22,18 +22,18 @@ import (
 // DagReportAPIService DagReportAPI service
 type DagReportAPIService service
 
-type ApiGetDagReportsRequest struct {
+type DagReportAPIGetDagReportsRequest struct {
 	ctx context.Context
 	ApiService *DagReportAPIService
 	subdir *string
 }
 
-func (r ApiGetDagReportsRequest) Subdir(subdir string) ApiGetDagReportsRequest {
+func (r DagReportAPIGetDagReportsRequest) Subdir(subdir string) DagReportAPIGetDagReportsRequest {
 	r.subdir = &subdir
 	return r
 }
 
-func (r ApiGetDagReportsRequest) Execute() (interface{}, *http.Response, error) {
+func (r DagReportAPIGetDagReportsRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.GetDagReportsExecute(r)
 }
 
@@ -43,10 +43,10 @@ GetDagReports Get Dag Reports
 Get DAG report.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDagReportsRequest
+ @return DagReportAPIGetDagReportsRequest
 */
-func (a *DagReportAPIService) GetDagReports(ctx context.Context) ApiGetDagReportsRequest {
-	return ApiGetDagReportsRequest{
+func (a *DagReportAPIService) GetDagReports(ctx context.Context) DagReportAPIGetDagReportsRequest {
+	return DagReportAPIGetDagReportsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *DagReportAPIService) GetDagReports(ctx context.Context) ApiGetDagReport
 
 // Execute executes the request
 //  @return interface{}
-func (a *DagReportAPIService) GetDagReportsExecute(r ApiGetDagReportsRequest) (interface{}, *http.Response, error) {
+func (a *DagReportAPIService) GetDagReportsExecute(r DagReportAPIGetDagReportsRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

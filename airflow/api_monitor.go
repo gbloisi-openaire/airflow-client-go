@@ -22,12 +22,12 @@ import (
 // MonitorAPIService MonitorAPI service
 type MonitorAPIService service
 
-type ApiGetHealthRequest struct {
+type MonitorAPIGetHealthRequest struct {
 	ctx context.Context
 	ApiService *MonitorAPIService
 }
 
-func (r ApiGetHealthRequest) Execute() (*HealthInfoResponse, *http.Response, error) {
+func (r MonitorAPIGetHealthRequest) Execute() (*HealthInfoResponse, *http.Response, error) {
 	return r.ApiService.GetHealthExecute(r)
 }
 
@@ -35,10 +35,10 @@ func (r ApiGetHealthRequest) Execute() (*HealthInfoResponse, *http.Response, err
 GetHealth Get Health
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetHealthRequest
+ @return MonitorAPIGetHealthRequest
 */
-func (a *MonitorAPIService) GetHealth(ctx context.Context) ApiGetHealthRequest {
-	return ApiGetHealthRequest{
+func (a *MonitorAPIService) GetHealth(ctx context.Context) MonitorAPIGetHealthRequest {
+	return MonitorAPIGetHealthRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -46,7 +46,7 @@ func (a *MonitorAPIService) GetHealth(ctx context.Context) ApiGetHealthRequest {
 
 // Execute executes the request
 //  @return HealthInfoResponse
-func (a *MonitorAPIService) GetHealthExecute(r ApiGetHealthRequest) (*HealthInfoResponse, *http.Response, error) {
+func (a *MonitorAPIService) GetHealthExecute(r MonitorAPIGetHealthRequest) (*HealthInfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

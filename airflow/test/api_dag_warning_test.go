@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/gbloisi-openaire/airflow-client-go/airflow"
 )
 
 func Test_airflow_DagWarningAPIService(t *testing.T) {

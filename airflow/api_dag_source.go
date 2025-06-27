@@ -23,7 +23,7 @@ import (
 // DagSourceAPIService DagSourceAPI service
 type DagSourceAPIService service
 
-type ApiGetDagSourceRequest struct {
+type DagSourceAPIGetDagSourceRequest struct {
 	ctx context.Context
 	ApiService *DagSourceAPIService
 	dagId string
@@ -31,17 +31,17 @@ type ApiGetDagSourceRequest struct {
 	accept *string
 }
 
-func (r ApiGetDagSourceRequest) VersionNumber(versionNumber int32) ApiGetDagSourceRequest {
+func (r DagSourceAPIGetDagSourceRequest) VersionNumber(versionNumber int32) DagSourceAPIGetDagSourceRequest {
 	r.versionNumber = &versionNumber
 	return r
 }
 
-func (r ApiGetDagSourceRequest) Accept(accept string) ApiGetDagSourceRequest {
+func (r DagSourceAPIGetDagSourceRequest) Accept(accept string) DagSourceAPIGetDagSourceRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiGetDagSourceRequest) Execute() (*DAGSourceResponse, *http.Response, error) {
+func (r DagSourceAPIGetDagSourceRequest) Execute() (*DAGSourceResponse, *http.Response, error) {
 	return r.ApiService.GetDagSourceExecute(r)
 }
 
@@ -52,10 +52,10 @@ Get source code using file token.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
- @return ApiGetDagSourceRequest
+ @return DagSourceAPIGetDagSourceRequest
 */
-func (a *DagSourceAPIService) GetDagSource(ctx context.Context, dagId string) ApiGetDagSourceRequest {
-	return ApiGetDagSourceRequest{
+func (a *DagSourceAPIService) GetDagSource(ctx context.Context, dagId string) DagSourceAPIGetDagSourceRequest {
+	return DagSourceAPIGetDagSourceRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -64,7 +64,7 @@ func (a *DagSourceAPIService) GetDagSource(ctx context.Context, dagId string) Ap
 
 // Execute executes the request
 //  @return DAGSourceResponse
-func (a *DagSourceAPIService) GetDagSourceExecute(r ApiGetDagSourceRequest) (*DAGSourceResponse, *http.Response, error) {
+func (a *DagSourceAPIService) GetDagSourceExecute(r DagSourceAPIGetDagSourceRequest) (*DAGSourceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -23,24 +23,24 @@ import (
 // ConfigAPIService ConfigAPI service
 type ConfigAPIService service
 
-type ApiGetConfigRequest struct {
+type ConfigAPIGetConfigRequest struct {
 	ctx context.Context
 	ApiService *ConfigAPIService
 	section *string
 	accept *string
 }
 
-func (r ApiGetConfigRequest) Section(section string) ApiGetConfigRequest {
+func (r ConfigAPIGetConfigRequest) Section(section string) ConfigAPIGetConfigRequest {
 	r.section = &section
 	return r
 }
 
-func (r ApiGetConfigRequest) Accept(accept string) ApiGetConfigRequest {
+func (r ConfigAPIGetConfigRequest) Accept(accept string) ConfigAPIGetConfigRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiGetConfigRequest) Execute() (*Config, *http.Response, error) {
+func (r ConfigAPIGetConfigRequest) Execute() (*Config, *http.Response, error) {
 	return r.ApiService.GetConfigExecute(r)
 }
 
@@ -48,10 +48,10 @@ func (r ApiGetConfigRequest) Execute() (*Config, *http.Response, error) {
 GetConfig Get Config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetConfigRequest
+ @return ConfigAPIGetConfigRequest
 */
-func (a *ConfigAPIService) GetConfig(ctx context.Context) ApiGetConfigRequest {
-	return ApiGetConfigRequest{
+func (a *ConfigAPIService) GetConfig(ctx context.Context) ConfigAPIGetConfigRequest {
+	return ConfigAPIGetConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -59,7 +59,7 @@ func (a *ConfigAPIService) GetConfig(ctx context.Context) ApiGetConfigRequest {
 
 // Execute executes the request
 //  @return Config
-func (a *ConfigAPIService) GetConfigExecute(r ApiGetConfigRequest) (*Config, *http.Response, error) {
+func (a *ConfigAPIService) GetConfigExecute(r ConfigAPIGetConfigRequest) (*Config, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -192,7 +192,7 @@ func (a *ConfigAPIService) GetConfigExecute(r ApiGetConfigRequest) (*Config, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetConfigValueRequest struct {
+type ConfigAPIGetConfigValueRequest struct {
 	ctx context.Context
 	ApiService *ConfigAPIService
 	section string
@@ -200,12 +200,12 @@ type ApiGetConfigValueRequest struct {
 	accept *string
 }
 
-func (r ApiGetConfigValueRequest) Accept(accept string) ApiGetConfigValueRequest {
+func (r ConfigAPIGetConfigValueRequest) Accept(accept string) ConfigAPIGetConfigValueRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiGetConfigValueRequest) Execute() (*Config, *http.Response, error) {
+func (r ConfigAPIGetConfigValueRequest) Execute() (*Config, *http.Response, error) {
 	return r.ApiService.GetConfigValueExecute(r)
 }
 
@@ -215,10 +215,10 @@ GetConfigValue Get Config Value
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param section
  @param option
- @return ApiGetConfigValueRequest
+ @return ConfigAPIGetConfigValueRequest
 */
-func (a *ConfigAPIService) GetConfigValue(ctx context.Context, section string, option string) ApiGetConfigValueRequest {
-	return ApiGetConfigValueRequest{
+func (a *ConfigAPIService) GetConfigValue(ctx context.Context, section string, option string) ConfigAPIGetConfigValueRequest {
+	return ConfigAPIGetConfigValueRequest{
 		ApiService: a,
 		ctx: ctx,
 		section: section,
@@ -228,7 +228,7 @@ func (a *ConfigAPIService) GetConfigValue(ctx context.Context, section string, o
 
 // Execute executes the request
 //  @return Config
-func (a *ConfigAPIService) GetConfigValueExecute(r ApiGetConfigValueRequest) (*Config, *http.Response, error) {
+func (a *ConfigAPIService) GetConfigValueExecute(r ConfigAPIGetConfigValueRequest) (*Config, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -22,18 +22,18 @@ import (
 // LoginAPIService LoginAPI service
 type LoginAPIService service
 
-type ApiLoginRequest struct {
+type LoginAPILoginRequest struct {
 	ctx context.Context
 	ApiService *LoginAPIService
 	next *string
 }
 
-func (r ApiLoginRequest) Next(next string) ApiLoginRequest {
+func (r LoginAPILoginRequest) Next(next string) LoginAPILoginRequest {
 	r.next = &next
 	return r
 }
 
-func (r ApiLoginRequest) Execute() (interface{}, *http.Response, error) {
+func (r LoginAPILoginRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.LoginExecute(r)
 }
 
@@ -43,10 +43,10 @@ Login Login
 Redirect to the login URL depending on the AuthManager configured.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLoginRequest
+ @return LoginAPILoginRequest
 */
-func (a *LoginAPIService) Login(ctx context.Context) ApiLoginRequest {
-	return ApiLoginRequest{
+func (a *LoginAPIService) Login(ctx context.Context) LoginAPILoginRequest {
+	return LoginAPILoginRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *LoginAPIService) Login(ctx context.Context) ApiLoginRequest {
 
 // Execute executes the request
 //  @return interface{}
-func (a *LoginAPIService) LoginExecute(r ApiLoginRequest) (interface{}, *http.Response, error) {
+func (a *LoginAPIService) LoginExecute(r LoginAPILoginRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -151,18 +151,18 @@ func (a *LoginAPIService) LoginExecute(r ApiLoginRequest) (interface{}, *http.Re
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiLogoutRequest struct {
+type LoginAPILogoutRequest struct {
 	ctx context.Context
 	ApiService *LoginAPIService
 	next *string
 }
 
-func (r ApiLogoutRequest) Next(next string) ApiLogoutRequest {
+func (r LoginAPILogoutRequest) Next(next string) LoginAPILogoutRequest {
 	r.next = &next
 	return r
 }
 
-func (r ApiLogoutRequest) Execute() (interface{}, *http.Response, error) {
+func (r LoginAPILogoutRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.LogoutExecute(r)
 }
 
@@ -172,10 +172,10 @@ Logout Logout
 Logout the user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLogoutRequest
+ @return LoginAPILogoutRequest
 */
-func (a *LoginAPIService) Logout(ctx context.Context) ApiLogoutRequest {
-	return ApiLogoutRequest{
+func (a *LoginAPIService) Logout(ctx context.Context) LoginAPILogoutRequest {
+	return LoginAPILogoutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -183,7 +183,7 @@ func (a *LoginAPIService) Logout(ctx context.Context) ApiLogoutRequest {
 
 // Execute executes the request
 //  @return interface{}
-func (a *LoginAPIService) LogoutExecute(r ApiLogoutRequest) (interface{}, *http.Response, error) {
+func (a *LoginAPIService) LogoutExecute(r LoginAPILogoutRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

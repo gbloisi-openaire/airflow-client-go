@@ -24,18 +24,18 @@ import (
 // VariableAPIService VariableAPI service
 type VariableAPIService service
 
-type ApiBulkVariablesRequest struct {
+type VariableAPIBulkVariablesRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	bulkBodyVariableBody *BulkBodyVariableBody
 }
 
-func (r ApiBulkVariablesRequest) BulkBodyVariableBody(bulkBodyVariableBody BulkBodyVariableBody) ApiBulkVariablesRequest {
+func (r VariableAPIBulkVariablesRequest) BulkBodyVariableBody(bulkBodyVariableBody BulkBodyVariableBody) VariableAPIBulkVariablesRequest {
 	r.bulkBodyVariableBody = &bulkBodyVariableBody
 	return r
 }
 
-func (r ApiBulkVariablesRequest) Execute() (*BulkResponse, *http.Response, error) {
+func (r VariableAPIBulkVariablesRequest) Execute() (*BulkResponse, *http.Response, error) {
 	return r.ApiService.BulkVariablesExecute(r)
 }
 
@@ -45,10 +45,10 @@ BulkVariables Bulk Variables
 Bulk create, update, and delete variables.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBulkVariablesRequest
+ @return VariableAPIBulkVariablesRequest
 */
-func (a *VariableAPIService) BulkVariables(ctx context.Context) ApiBulkVariablesRequest {
-	return ApiBulkVariablesRequest{
+func (a *VariableAPIService) BulkVariables(ctx context.Context) VariableAPIBulkVariablesRequest {
+	return VariableAPIBulkVariablesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +56,7 @@ func (a *VariableAPIService) BulkVariables(ctx context.Context) ApiBulkVariables
 
 // Execute executes the request
 //  @return BulkResponse
-func (a *VariableAPIService) BulkVariablesExecute(r ApiBulkVariablesRequest) (*BulkResponse, *http.Response, error) {
+func (a *VariableAPIService) BulkVariablesExecute(r VariableAPIBulkVariablesRequest) (*BulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -166,13 +166,13 @@ func (a *VariableAPIService) BulkVariablesExecute(r ApiBulkVariablesRequest) (*B
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteVariableRequest struct {
+type VariableAPIDeleteVariableRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	variableKey string
 }
 
-func (r ApiDeleteVariableRequest) Execute() (*http.Response, error) {
+func (r VariableAPIDeleteVariableRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteVariableExecute(r)
 }
 
@@ -183,10 +183,10 @@ Delete a variable entry.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param variableKey
- @return ApiDeleteVariableRequest
+ @return VariableAPIDeleteVariableRequest
 */
-func (a *VariableAPIService) DeleteVariable(ctx context.Context, variableKey string) ApiDeleteVariableRequest {
-	return ApiDeleteVariableRequest{
+func (a *VariableAPIService) DeleteVariable(ctx context.Context, variableKey string) VariableAPIDeleteVariableRequest {
+	return VariableAPIDeleteVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		variableKey: variableKey,
@@ -194,7 +194,7 @@ func (a *VariableAPIService) DeleteVariable(ctx context.Context, variableKey str
 }
 
 // Execute executes the request
-func (a *VariableAPIService) DeleteVariableExecute(r ApiDeleteVariableRequest) (*http.Response, error) {
+func (a *VariableAPIService) DeleteVariableExecute(r VariableAPIDeleteVariableRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -301,13 +301,13 @@ func (a *VariableAPIService) DeleteVariableExecute(r ApiDeleteVariableRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetVariableRequest struct {
+type VariableAPIGetVariableRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	variableKey string
 }
 
-func (r ApiGetVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
+func (r VariableAPIGetVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
 	return r.ApiService.GetVariableExecute(r)
 }
 
@@ -318,10 +318,10 @@ Get a variable entry.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param variableKey
- @return ApiGetVariableRequest
+ @return VariableAPIGetVariableRequest
 */
-func (a *VariableAPIService) GetVariable(ctx context.Context, variableKey string) ApiGetVariableRequest {
-	return ApiGetVariableRequest{
+func (a *VariableAPIService) GetVariable(ctx context.Context, variableKey string) VariableAPIGetVariableRequest {
+	return VariableAPIGetVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		variableKey: variableKey,
@@ -330,7 +330,7 @@ func (a *VariableAPIService) GetVariable(ctx context.Context, variableKey string
 
 // Execute executes the request
 //  @return VariableResponse
-func (a *VariableAPIService) GetVariableExecute(r ApiGetVariableRequest) (*VariableResponse, *http.Response, error) {
+func (a *VariableAPIService) GetVariableExecute(r VariableAPIGetVariableRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -447,7 +447,7 @@ func (a *VariableAPIService) GetVariableExecute(r ApiGetVariableRequest) (*Varia
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetVariablesRequest struct {
+type VariableAPIGetVariablesRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	limit *int32
@@ -456,28 +456,28 @@ type ApiGetVariablesRequest struct {
 	variableKeyPattern *string
 }
 
-func (r ApiGetVariablesRequest) Limit(limit int32) ApiGetVariablesRequest {
+func (r VariableAPIGetVariablesRequest) Limit(limit int32) VariableAPIGetVariablesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetVariablesRequest) Offset(offset int32) ApiGetVariablesRequest {
+func (r VariableAPIGetVariablesRequest) Offset(offset int32) VariableAPIGetVariablesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetVariablesRequest) OrderBy(orderBy string) ApiGetVariablesRequest {
+func (r VariableAPIGetVariablesRequest) OrderBy(orderBy string) VariableAPIGetVariablesRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetVariablesRequest) VariableKeyPattern(variableKeyPattern string) ApiGetVariablesRequest {
+func (r VariableAPIGetVariablesRequest) VariableKeyPattern(variableKeyPattern string) VariableAPIGetVariablesRequest {
 	r.variableKeyPattern = &variableKeyPattern
 	return r
 }
 
-func (r ApiGetVariablesRequest) Execute() (*VariableCollectionResponse, *http.Response, error) {
+func (r VariableAPIGetVariablesRequest) Execute() (*VariableCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetVariablesExecute(r)
 }
 
@@ -487,10 +487,10 @@ GetVariables Get Variables
 Get all Variables entries.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetVariablesRequest
+ @return VariableAPIGetVariablesRequest
 */
-func (a *VariableAPIService) GetVariables(ctx context.Context) ApiGetVariablesRequest {
-	return ApiGetVariablesRequest{
+func (a *VariableAPIService) GetVariables(ctx context.Context) VariableAPIGetVariablesRequest {
+	return VariableAPIGetVariablesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -498,7 +498,7 @@ func (a *VariableAPIService) GetVariables(ctx context.Context) ApiGetVariablesRe
 
 // Execute executes the request
 //  @return VariableCollectionResponse
-func (a *VariableAPIService) GetVariablesExecute(r ApiGetVariablesRequest) (*VariableCollectionResponse, *http.Response, error) {
+func (a *VariableAPIService) GetVariablesExecute(r VariableAPIGetVariablesRequest) (*VariableCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -624,7 +624,7 @@ func (a *VariableAPIService) GetVariablesExecute(r ApiGetVariablesRequest) (*Var
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchVariableRequest struct {
+type VariableAPIPatchVariableRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	variableKey string
@@ -632,17 +632,17 @@ type ApiPatchVariableRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchVariableRequest) VariableBody(variableBody VariableBody) ApiPatchVariableRequest {
+func (r VariableAPIPatchVariableRequest) VariableBody(variableBody VariableBody) VariableAPIPatchVariableRequest {
 	r.variableBody = &variableBody
 	return r
 }
 
-func (r ApiPatchVariableRequest) UpdateMask(updateMask []string) ApiPatchVariableRequest {
+func (r VariableAPIPatchVariableRequest) UpdateMask(updateMask []string) VariableAPIPatchVariableRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
+func (r VariableAPIPatchVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
 	return r.ApiService.PatchVariableExecute(r)
 }
 
@@ -653,10 +653,10 @@ Update a variable by key.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param variableKey
- @return ApiPatchVariableRequest
+ @return VariableAPIPatchVariableRequest
 */
-func (a *VariableAPIService) PatchVariable(ctx context.Context, variableKey string) ApiPatchVariableRequest {
-	return ApiPatchVariableRequest{
+func (a *VariableAPIService) PatchVariable(ctx context.Context, variableKey string) VariableAPIPatchVariableRequest {
+	return VariableAPIPatchVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		variableKey: variableKey,
@@ -665,7 +665,7 @@ func (a *VariableAPIService) PatchVariable(ctx context.Context, variableKey stri
 
 // Execute executes the request
 //  @return VariableResponse
-func (a *VariableAPIService) PatchVariableExecute(r ApiPatchVariableRequest) (*VariableResponse, *http.Response, error) {
+func (a *VariableAPIService) PatchVariableExecute(r VariableAPIPatchVariableRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -809,18 +809,18 @@ func (a *VariableAPIService) PatchVariableExecute(r ApiPatchVariableRequest) (*V
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostVariableRequest struct {
+type VariableAPIPostVariableRequest struct {
 	ctx context.Context
 	ApiService *VariableAPIService
 	variableBody *VariableBody
 }
 
-func (r ApiPostVariableRequest) VariableBody(variableBody VariableBody) ApiPostVariableRequest {
+func (r VariableAPIPostVariableRequest) VariableBody(variableBody VariableBody) VariableAPIPostVariableRequest {
 	r.variableBody = &variableBody
 	return r
 }
 
-func (r ApiPostVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
+func (r VariableAPIPostVariableRequest) Execute() (*VariableResponse, *http.Response, error) {
 	return r.ApiService.PostVariableExecute(r)
 }
 
@@ -830,10 +830,10 @@ PostVariable Post Variable
 Create a variable.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostVariableRequest
+ @return VariableAPIPostVariableRequest
 */
-func (a *VariableAPIService) PostVariable(ctx context.Context) ApiPostVariableRequest {
-	return ApiPostVariableRequest{
+func (a *VariableAPIService) PostVariable(ctx context.Context) VariableAPIPostVariableRequest {
+	return VariableAPIPostVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -841,7 +841,7 @@ func (a *VariableAPIService) PostVariable(ctx context.Context) ApiPostVariableRe
 
 // Execute executes the request
 //  @return VariableResponse
-func (a *VariableAPIService) PostVariableExecute(r ApiPostVariableRequest) (*VariableResponse, *http.Response, error) {
+func (a *VariableAPIService) PostVariableExecute(r VariableAPIPostVariableRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

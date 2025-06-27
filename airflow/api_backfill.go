@@ -23,13 +23,13 @@ import (
 // BackfillAPIService BackfillAPI service
 type BackfillAPIService service
 
-type ApiCancelBackfillRequest struct {
+type BackfillAPICancelBackfillRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillId int32
 }
 
-func (r ApiCancelBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
+func (r BackfillAPICancelBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
 	return r.ApiService.CancelBackfillExecute(r)
 }
 
@@ -38,10 +38,10 @@ CancelBackfill Cancel Backfill
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param backfillId
- @return ApiCancelBackfillRequest
+ @return BackfillAPICancelBackfillRequest
 */
-func (a *BackfillAPIService) CancelBackfill(ctx context.Context, backfillId int32) ApiCancelBackfillRequest {
-	return ApiCancelBackfillRequest{
+func (a *BackfillAPIService) CancelBackfill(ctx context.Context, backfillId int32) BackfillAPICancelBackfillRequest {
+	return BackfillAPICancelBackfillRequest{
 		ApiService: a,
 		ctx: ctx,
 		backfillId: backfillId,
@@ -50,7 +50,7 @@ func (a *BackfillAPIService) CancelBackfill(ctx context.Context, backfillId int3
 
 // Execute executes the request
 //  @return BackfillResponse
-func (a *BackfillAPIService) CancelBackfillExecute(r ApiCancelBackfillRequest) (*BackfillResponse, *http.Response, error) {
+func (a *BackfillAPIService) CancelBackfillExecute(r BackfillAPICancelBackfillRequest) (*BackfillResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -181,18 +181,18 @@ func (a *BackfillAPIService) CancelBackfillExecute(r ApiCancelBackfillRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateBackfillRequest struct {
+type BackfillAPICreateBackfillRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillPostBody *BackfillPostBody
 }
 
-func (r ApiCreateBackfillRequest) BackfillPostBody(backfillPostBody BackfillPostBody) ApiCreateBackfillRequest {
+func (r BackfillAPICreateBackfillRequest) BackfillPostBody(backfillPostBody BackfillPostBody) BackfillAPICreateBackfillRequest {
 	r.backfillPostBody = &backfillPostBody
 	return r
 }
 
-func (r ApiCreateBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
+func (r BackfillAPICreateBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
 	return r.ApiService.CreateBackfillExecute(r)
 }
 
@@ -200,10 +200,10 @@ func (r ApiCreateBackfillRequest) Execute() (*BackfillResponse, *http.Response, 
 CreateBackfill Create Backfill
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateBackfillRequest
+ @return BackfillAPICreateBackfillRequest
 */
-func (a *BackfillAPIService) CreateBackfill(ctx context.Context) ApiCreateBackfillRequest {
-	return ApiCreateBackfillRequest{
+func (a *BackfillAPIService) CreateBackfill(ctx context.Context) BackfillAPICreateBackfillRequest {
+	return BackfillAPICreateBackfillRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -211,7 +211,7 @@ func (a *BackfillAPIService) CreateBackfill(ctx context.Context) ApiCreateBackfi
 
 // Execute executes the request
 //  @return BackfillResponse
-func (a *BackfillAPIService) CreateBackfillExecute(r ApiCreateBackfillRequest) (*BackfillResponse, *http.Response, error) {
+func (a *BackfillAPIService) CreateBackfillExecute(r BackfillAPICreateBackfillRequest) (*BackfillResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -343,18 +343,18 @@ func (a *BackfillAPIService) CreateBackfillExecute(r ApiCreateBackfillRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateBackfillDryRunRequest struct {
+type BackfillAPICreateBackfillDryRunRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillPostBody *BackfillPostBody
 }
 
-func (r ApiCreateBackfillDryRunRequest) BackfillPostBody(backfillPostBody BackfillPostBody) ApiCreateBackfillDryRunRequest {
+func (r BackfillAPICreateBackfillDryRunRequest) BackfillPostBody(backfillPostBody BackfillPostBody) BackfillAPICreateBackfillDryRunRequest {
 	r.backfillPostBody = &backfillPostBody
 	return r
 }
 
-func (r ApiCreateBackfillDryRunRequest) Execute() (*DryRunBackfillCollectionResponse, *http.Response, error) {
+func (r BackfillAPICreateBackfillDryRunRequest) Execute() (*DryRunBackfillCollectionResponse, *http.Response, error) {
 	return r.ApiService.CreateBackfillDryRunExecute(r)
 }
 
@@ -362,10 +362,10 @@ func (r ApiCreateBackfillDryRunRequest) Execute() (*DryRunBackfillCollectionResp
 CreateBackfillDryRun Create Backfill Dry Run
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateBackfillDryRunRequest
+ @return BackfillAPICreateBackfillDryRunRequest
 */
-func (a *BackfillAPIService) CreateBackfillDryRun(ctx context.Context) ApiCreateBackfillDryRunRequest {
-	return ApiCreateBackfillDryRunRequest{
+func (a *BackfillAPIService) CreateBackfillDryRun(ctx context.Context) BackfillAPICreateBackfillDryRunRequest {
+	return BackfillAPICreateBackfillDryRunRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -373,7 +373,7 @@ func (a *BackfillAPIService) CreateBackfillDryRun(ctx context.Context) ApiCreate
 
 // Execute executes the request
 //  @return DryRunBackfillCollectionResponse
-func (a *BackfillAPIService) CreateBackfillDryRunExecute(r ApiCreateBackfillDryRunRequest) (*DryRunBackfillCollectionResponse, *http.Response, error) {
+func (a *BackfillAPIService) CreateBackfillDryRunExecute(r BackfillAPICreateBackfillDryRunRequest) (*DryRunBackfillCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -505,13 +505,13 @@ func (a *BackfillAPIService) CreateBackfillDryRunExecute(r ApiCreateBackfillDryR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetBackfillRequest struct {
+type BackfillAPIGetBackfillRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillId int32
 }
 
-func (r ApiGetBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
+func (r BackfillAPIGetBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
 	return r.ApiService.GetBackfillExecute(r)
 }
 
@@ -520,10 +520,10 @@ GetBackfill Get Backfill
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param backfillId
- @return ApiGetBackfillRequest
+ @return BackfillAPIGetBackfillRequest
 */
-func (a *BackfillAPIService) GetBackfill(ctx context.Context, backfillId int32) ApiGetBackfillRequest {
-	return ApiGetBackfillRequest{
+func (a *BackfillAPIService) GetBackfill(ctx context.Context, backfillId int32) BackfillAPIGetBackfillRequest {
+	return BackfillAPIGetBackfillRequest{
 		ApiService: a,
 		ctx: ctx,
 		backfillId: backfillId,
@@ -532,7 +532,7 @@ func (a *BackfillAPIService) GetBackfill(ctx context.Context, backfillId int32) 
 
 // Execute executes the request
 //  @return BackfillResponse
-func (a *BackfillAPIService) GetBackfillExecute(r ApiGetBackfillRequest) (*BackfillResponse, *http.Response, error) {
+func (a *BackfillAPIService) GetBackfillExecute(r BackfillAPIGetBackfillRequest) (*BackfillResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -652,7 +652,7 @@ func (a *BackfillAPIService) GetBackfillExecute(r ApiGetBackfillRequest) (*Backf
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListBackfillsRequest struct {
+type BackfillAPIListBackfillsRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	dagId *string
@@ -661,27 +661,27 @@ type ApiListBackfillsRequest struct {
 	orderBy *string
 }
 
-func (r ApiListBackfillsRequest) DagId(dagId string) ApiListBackfillsRequest {
+func (r BackfillAPIListBackfillsRequest) DagId(dagId string) BackfillAPIListBackfillsRequest {
 	r.dagId = &dagId
 	return r
 }
 
-func (r ApiListBackfillsRequest) Limit(limit int32) ApiListBackfillsRequest {
+func (r BackfillAPIListBackfillsRequest) Limit(limit int32) BackfillAPIListBackfillsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiListBackfillsRequest) Offset(offset int32) ApiListBackfillsRequest {
+func (r BackfillAPIListBackfillsRequest) Offset(offset int32) BackfillAPIListBackfillsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiListBackfillsRequest) OrderBy(orderBy string) ApiListBackfillsRequest {
+func (r BackfillAPIListBackfillsRequest) OrderBy(orderBy string) BackfillAPIListBackfillsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiListBackfillsRequest) Execute() (*BackfillCollectionResponse, *http.Response, error) {
+func (r BackfillAPIListBackfillsRequest) Execute() (*BackfillCollectionResponse, *http.Response, error) {
 	return r.ApiService.ListBackfillsExecute(r)
 }
 
@@ -689,10 +689,10 @@ func (r ApiListBackfillsRequest) Execute() (*BackfillCollectionResponse, *http.R
 ListBackfills List Backfills
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListBackfillsRequest
+ @return BackfillAPIListBackfillsRequest
 */
-func (a *BackfillAPIService) ListBackfills(ctx context.Context) ApiListBackfillsRequest {
-	return ApiListBackfillsRequest{
+func (a *BackfillAPIService) ListBackfills(ctx context.Context) BackfillAPIListBackfillsRequest {
+	return BackfillAPIListBackfillsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -700,7 +700,7 @@ func (a *BackfillAPIService) ListBackfills(ctx context.Context) ApiListBackfills
 
 // Execute executes the request
 //  @return BackfillCollectionResponse
-func (a *BackfillAPIService) ListBackfillsExecute(r ApiListBackfillsRequest) (*BackfillCollectionResponse, *http.Response, error) {
+func (a *BackfillAPIService) ListBackfillsExecute(r BackfillAPIListBackfillsRequest) (*BackfillCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -827,13 +827,13 @@ func (a *BackfillAPIService) ListBackfillsExecute(r ApiListBackfillsRequest) (*B
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPauseBackfillRequest struct {
+type BackfillAPIPauseBackfillRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillId int32
 }
 
-func (r ApiPauseBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
+func (r BackfillAPIPauseBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
 	return r.ApiService.PauseBackfillExecute(r)
 }
 
@@ -842,10 +842,10 @@ PauseBackfill Pause Backfill
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param backfillId
- @return ApiPauseBackfillRequest
+ @return BackfillAPIPauseBackfillRequest
 */
-func (a *BackfillAPIService) PauseBackfill(ctx context.Context, backfillId int32) ApiPauseBackfillRequest {
-	return ApiPauseBackfillRequest{
+func (a *BackfillAPIService) PauseBackfill(ctx context.Context, backfillId int32) BackfillAPIPauseBackfillRequest {
+	return BackfillAPIPauseBackfillRequest{
 		ApiService: a,
 		ctx: ctx,
 		backfillId: backfillId,
@@ -854,7 +854,7 @@ func (a *BackfillAPIService) PauseBackfill(ctx context.Context, backfillId int32
 
 // Execute executes the request
 //  @return BackfillResponse
-func (a *BackfillAPIService) PauseBackfillExecute(r ApiPauseBackfillRequest) (*BackfillResponse, *http.Response, error) {
+func (a *BackfillAPIService) PauseBackfillExecute(r BackfillAPIPauseBackfillRequest) (*BackfillResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -985,13 +985,13 @@ func (a *BackfillAPIService) PauseBackfillExecute(r ApiPauseBackfillRequest) (*B
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUnpauseBackfillRequest struct {
+type BackfillAPIUnpauseBackfillRequest struct {
 	ctx context.Context
 	ApiService *BackfillAPIService
 	backfillId int32
 }
 
-func (r ApiUnpauseBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
+func (r BackfillAPIUnpauseBackfillRequest) Execute() (*BackfillResponse, *http.Response, error) {
 	return r.ApiService.UnpauseBackfillExecute(r)
 }
 
@@ -1000,10 +1000,10 @@ UnpauseBackfill Unpause Backfill
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param backfillId
- @return ApiUnpauseBackfillRequest
+ @return BackfillAPIUnpauseBackfillRequest
 */
-func (a *BackfillAPIService) UnpauseBackfill(ctx context.Context, backfillId int32) ApiUnpauseBackfillRequest {
-	return ApiUnpauseBackfillRequest{
+func (a *BackfillAPIService) UnpauseBackfill(ctx context.Context, backfillId int32) BackfillAPIUnpauseBackfillRequest {
+	return BackfillAPIUnpauseBackfillRequest{
 		ApiService: a,
 		ctx: ctx,
 		backfillId: backfillId,
@@ -1012,7 +1012,7 @@ func (a *BackfillAPIService) UnpauseBackfill(ctx context.Context, backfillId int
 
 // Execute executes the request
 //  @return BackfillResponse
-func (a *BackfillAPIService) UnpauseBackfillExecute(r ApiUnpauseBackfillRequest) (*BackfillResponse, *http.Response, error) {
+func (a *BackfillAPIService) UnpauseBackfillExecute(r BackfillAPIUnpauseBackfillRequest) (*BackfillResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

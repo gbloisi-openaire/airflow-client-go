@@ -23,7 +23,7 @@ import (
 // XComAPIService XComAPI service
 type XComAPIService service
 
-type ApiCreateXcomEntryRequest struct {
+type XComAPICreateXcomEntryRequest struct {
 	ctx context.Context
 	ApiService *XComAPIService
 	dagId string
@@ -32,12 +32,12 @@ type ApiCreateXcomEntryRequest struct {
 	xComCreateBody *XComCreateBody
 }
 
-func (r ApiCreateXcomEntryRequest) XComCreateBody(xComCreateBody XComCreateBody) ApiCreateXcomEntryRequest {
+func (r XComAPICreateXcomEntryRequest) XComCreateBody(xComCreateBody XComCreateBody) XComAPICreateXcomEntryRequest {
 	r.xComCreateBody = &xComCreateBody
 	return r
 }
 
-func (r ApiCreateXcomEntryRequest) Execute() (*XComResponseNative, *http.Response, error) {
+func (r XComAPICreateXcomEntryRequest) Execute() (*XComResponseNative, *http.Response, error) {
 	return r.ApiService.CreateXcomEntryExecute(r)
 }
 
@@ -50,10 +50,10 @@ Create an XCom entry.
  @param dagId
  @param taskId
  @param dagRunId
- @return ApiCreateXcomEntryRequest
+ @return XComAPICreateXcomEntryRequest
 */
-func (a *XComAPIService) CreateXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string) ApiCreateXcomEntryRequest {
-	return ApiCreateXcomEntryRequest{
+func (a *XComAPIService) CreateXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string) XComAPICreateXcomEntryRequest {
+	return XComAPICreateXcomEntryRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -64,7 +64,7 @@ func (a *XComAPIService) CreateXcomEntry(ctx context.Context, dagId string, task
 
 // Execute executes the request
 //  @return XComResponseNative
-func (a *XComAPIService) CreateXcomEntryExecute(r ApiCreateXcomEntryRequest) (*XComResponseNative, *http.Response, error) {
+func (a *XComAPIService) CreateXcomEntryExecute(r XComAPICreateXcomEntryRequest) (*XComResponseNative, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -199,7 +199,7 @@ func (a *XComAPIService) CreateXcomEntryExecute(r ApiCreateXcomEntryRequest) (*X
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetXcomEntriesRequest struct {
+type XComAPIGetXcomEntriesRequest struct {
 	ctx context.Context
 	ApiService *XComAPIService
 	dagId string
@@ -211,27 +211,27 @@ type ApiGetXcomEntriesRequest struct {
 	offset *int32
 }
 
-func (r ApiGetXcomEntriesRequest) XcomKey(xcomKey string) ApiGetXcomEntriesRequest {
+func (r XComAPIGetXcomEntriesRequest) XcomKey(xcomKey string) XComAPIGetXcomEntriesRequest {
 	r.xcomKey = &xcomKey
 	return r
 }
 
-func (r ApiGetXcomEntriesRequest) MapIndex(mapIndex int32) ApiGetXcomEntriesRequest {
+func (r XComAPIGetXcomEntriesRequest) MapIndex(mapIndex int32) XComAPIGetXcomEntriesRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetXcomEntriesRequest) Limit(limit int32) ApiGetXcomEntriesRequest {
+func (r XComAPIGetXcomEntriesRequest) Limit(limit int32) XComAPIGetXcomEntriesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetXcomEntriesRequest) Offset(offset int32) ApiGetXcomEntriesRequest {
+func (r XComAPIGetXcomEntriesRequest) Offset(offset int32) XComAPIGetXcomEntriesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetXcomEntriesRequest) Execute() (*XComCollectionResponse, *http.Response, error) {
+func (r XComAPIGetXcomEntriesRequest) Execute() (*XComCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetXcomEntriesExecute(r)
 }
 
@@ -246,10 +246,10 @@ This endpoint allows specifying `~` as the dag_id, dag_run_id, task_id to retrie
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetXcomEntriesRequest
+ @return XComAPIGetXcomEntriesRequest
 */
-func (a *XComAPIService) GetXcomEntries(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetXcomEntriesRequest {
-	return ApiGetXcomEntriesRequest{
+func (a *XComAPIService) GetXcomEntries(ctx context.Context, dagId string, dagRunId string, taskId string) XComAPIGetXcomEntriesRequest {
+	return XComAPIGetXcomEntriesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -260,7 +260,7 @@ func (a *XComAPIService) GetXcomEntries(ctx context.Context, dagId string, dagRu
 
 // Execute executes the request
 //  @return XComCollectionResponse
-func (a *XComAPIService) GetXcomEntriesExecute(r ApiGetXcomEntriesRequest) (*XComCollectionResponse, *http.Response, error) {
+func (a *XComAPIService) GetXcomEntriesExecute(r XComAPIGetXcomEntriesRequest) (*XComCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -408,7 +408,7 @@ func (a *XComAPIService) GetXcomEntriesExecute(r ApiGetXcomEntriesRequest) (*XCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetXcomEntryRequest struct {
+type XComAPIGetXcomEntryRequest struct {
 	ctx context.Context
 	ApiService *XComAPIService
 	dagId string
@@ -420,22 +420,22 @@ type ApiGetXcomEntryRequest struct {
 	stringify *bool
 }
 
-func (r ApiGetXcomEntryRequest) MapIndex(mapIndex int32) ApiGetXcomEntryRequest {
+func (r XComAPIGetXcomEntryRequest) MapIndex(mapIndex int32) XComAPIGetXcomEntryRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetXcomEntryRequest) Deserialize(deserialize bool) ApiGetXcomEntryRequest {
+func (r XComAPIGetXcomEntryRequest) Deserialize(deserialize bool) XComAPIGetXcomEntryRequest {
 	r.deserialize = &deserialize
 	return r
 }
 
-func (r ApiGetXcomEntryRequest) Stringify(stringify bool) ApiGetXcomEntryRequest {
+func (r XComAPIGetXcomEntryRequest) Stringify(stringify bool) XComAPIGetXcomEntryRequest {
 	r.stringify = &stringify
 	return r
 }
 
-func (r ApiGetXcomEntryRequest) Execute() (*ResponseGetXcomEntry, *http.Response, error) {
+func (r XComAPIGetXcomEntryRequest) Execute() (*ResponseGetXcomEntry, *http.Response, error) {
 	return r.ApiService.GetXcomEntryExecute(r)
 }
 
@@ -449,10 +449,10 @@ Get an XCom entry.
  @param taskId
  @param dagRunId
  @param xcomKey
- @return ApiGetXcomEntryRequest
+ @return XComAPIGetXcomEntryRequest
 */
-func (a *XComAPIService) GetXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string, xcomKey string) ApiGetXcomEntryRequest {
-	return ApiGetXcomEntryRequest{
+func (a *XComAPIService) GetXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string, xcomKey string) XComAPIGetXcomEntryRequest {
+	return XComAPIGetXcomEntryRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -464,7 +464,7 @@ func (a *XComAPIService) GetXcomEntry(ctx context.Context, dagId string, taskId 
 
 // Execute executes the request
 //  @return ResponseGetXcomEntry
-func (a *XComAPIService) GetXcomEntryExecute(r ApiGetXcomEntryRequest) (*ResponseGetXcomEntry, *http.Response, error) {
+func (a *XComAPIService) GetXcomEntryExecute(r XComAPIGetXcomEntryRequest) (*ResponseGetXcomEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -613,7 +613,7 @@ func (a *XComAPIService) GetXcomEntryExecute(r ApiGetXcomEntryRequest) (*Respons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateXcomEntryRequest struct {
+type XComAPIUpdateXcomEntryRequest struct {
 	ctx context.Context
 	ApiService *XComAPIService
 	dagId string
@@ -623,12 +623,12 @@ type ApiUpdateXcomEntryRequest struct {
 	xComUpdateBody *XComUpdateBody
 }
 
-func (r ApiUpdateXcomEntryRequest) XComUpdateBody(xComUpdateBody XComUpdateBody) ApiUpdateXcomEntryRequest {
+func (r XComAPIUpdateXcomEntryRequest) XComUpdateBody(xComUpdateBody XComUpdateBody) XComAPIUpdateXcomEntryRequest {
 	r.xComUpdateBody = &xComUpdateBody
 	return r
 }
 
-func (r ApiUpdateXcomEntryRequest) Execute() (*XComResponseNative, *http.Response, error) {
+func (r XComAPIUpdateXcomEntryRequest) Execute() (*XComResponseNative, *http.Response, error) {
 	return r.ApiService.UpdateXcomEntryExecute(r)
 }
 
@@ -642,10 +642,10 @@ Update an existing XCom entry.
  @param taskId
  @param dagRunId
  @param xcomKey
- @return ApiUpdateXcomEntryRequest
+ @return XComAPIUpdateXcomEntryRequest
 */
-func (a *XComAPIService) UpdateXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string, xcomKey string) ApiUpdateXcomEntryRequest {
-	return ApiUpdateXcomEntryRequest{
+func (a *XComAPIService) UpdateXcomEntry(ctx context.Context, dagId string, taskId string, dagRunId string, xcomKey string) XComAPIUpdateXcomEntryRequest {
+	return XComAPIUpdateXcomEntryRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -657,7 +657,7 @@ func (a *XComAPIService) UpdateXcomEntry(ctx context.Context, dagId string, task
 
 // Execute executes the request
 //  @return XComResponseNative
-func (a *XComAPIService) UpdateXcomEntryExecute(r ApiUpdateXcomEntryRequest) (*XComResponseNative, *http.Response, error) {
+func (a *XComAPIService) UpdateXcomEntryExecute(r XComAPIUpdateXcomEntryRequest) (*XComResponseNative, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}

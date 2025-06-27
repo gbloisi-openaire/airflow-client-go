@@ -20,18 +20,18 @@ type TaskInstanceState string
 
 // List of TaskInstanceState
 const (
-	REMOVED TaskInstanceState = "removed"
-	SCHEDULED TaskInstanceState = "scheduled"
-	QUEUED TaskInstanceState = "queued"
-	RUNNING TaskInstanceState = "running"
-	SUCCESS TaskInstanceState = "success"
-	RESTARTING TaskInstanceState = "restarting"
-	FAILED TaskInstanceState = "failed"
-	UP_FOR_RETRY TaskInstanceState = "up_for_retry"
-	UP_FOR_RESCHEDULE TaskInstanceState = "up_for_reschedule"
-	UPSTREAM_FAILED TaskInstanceState = "upstream_failed"
-	SKIPPED TaskInstanceState = "skipped"
-	DEFERRED TaskInstanceState = "deferred"
+	TASKINSTANCESTATE_REMOVED TaskInstanceState = "removed"
+	TASKINSTANCESTATE_SCHEDULED TaskInstanceState = "scheduled"
+	TASKINSTANCESTATE_QUEUED TaskInstanceState = "queued"
+	TASKINSTANCESTATE_RUNNING TaskInstanceState = "running"
+	TASKINSTANCESTATE_SUCCESS TaskInstanceState = "success"
+	TASKINSTANCESTATE_RESTARTING TaskInstanceState = "restarting"
+	TASKINSTANCESTATE_FAILED TaskInstanceState = "failed"
+	TASKINSTANCESTATE_UP_FOR_RETRY TaskInstanceState = "up_for_retry"
+	TASKINSTANCESTATE_UP_FOR_RESCHEDULE TaskInstanceState = "up_for_reschedule"
+	TASKINSTANCESTATE_UPSTREAM_FAILED TaskInstanceState = "upstream_failed"
+	TASKINSTANCESTATE_SKIPPED TaskInstanceState = "skipped"
+	TASKINSTANCESTATE_DEFERRED TaskInstanceState = "deferred"
 )
 
 // All allowed values of TaskInstanceState enum

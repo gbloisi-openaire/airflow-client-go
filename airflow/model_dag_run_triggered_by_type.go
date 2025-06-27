@@ -20,14 +20,14 @@ type DagRunTriggeredByType string
 
 // List of DagRunTriggeredByType
 const (
-	CLI DagRunTriggeredByType = "cli"
-	OPERATOR DagRunTriggeredByType = "operator"
-	REST_API DagRunTriggeredByType = "rest_api"
-	UI DagRunTriggeredByType = "ui"
-	TEST DagRunTriggeredByType = "test"
-	TIMETABLE DagRunTriggeredByType = "timetable"
-	ASSET DagRunTriggeredByType = "asset"
-	BACKFILL DagRunTriggeredByType = "backfill"
+	DAGRUNTRIGGEREDBYTYPE_CLI DagRunTriggeredByType = "cli"
+	DAGRUNTRIGGEREDBYTYPE_OPERATOR DagRunTriggeredByType = "operator"
+	DAGRUNTRIGGEREDBYTYPE_REST_API DagRunTriggeredByType = "rest_api"
+	DAGRUNTRIGGEREDBYTYPE_UI DagRunTriggeredByType = "ui"
+	DAGRUNTRIGGEREDBYTYPE_TEST DagRunTriggeredByType = "test"
+	DAGRUNTRIGGEREDBYTYPE_TIMETABLE DagRunTriggeredByType = "timetable"
+	DAGRUNTRIGGEREDBYTYPE_ASSET DagRunTriggeredByType = "asset"
+	DAGRUNTRIGGEREDBYTYPE_BACKFILL DagRunTriggeredByType = "backfill"
 )
 
 // All allowed values of DagRunTriggeredByType enum

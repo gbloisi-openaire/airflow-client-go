@@ -20,9 +20,9 @@ type BulkActionOnExistence string
 
 // List of BulkActionOnExistence
 const (
-	FAIL BulkActionOnExistence = "fail"
-	SKIP BulkActionOnExistence = "skip"
-	OVERWRITE BulkActionOnExistence = "overwrite"
+	BULKACTIONONEXISTENCE_FAIL BulkActionOnExistence = "fail"
+	BULKACTIONONEXISTENCE_SKIP BulkActionOnExistence = "skip"
+	BULKACTIONONEXISTENCE_OVERWRITE BulkActionOnExistence = "overwrite"
 )
 
 // All allowed values of BulkActionOnExistence enum

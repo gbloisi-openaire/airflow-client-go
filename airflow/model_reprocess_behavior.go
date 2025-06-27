@@ -20,9 +20,9 @@ type ReprocessBehavior string
 
 // List of ReprocessBehavior
 const (
-	FAILED ReprocessBehavior = "failed"
-	COMPLETED ReprocessBehavior = "completed"
-	NONE ReprocessBehavior = "none"
+	REPROCESSBEHAVIOR_FAILED ReprocessBehavior = "failed"
+	REPROCESSBEHAVIOR_COMPLETED ReprocessBehavior = "completed"
+	REPROCESSBEHAVIOR_NONE ReprocessBehavior = "none"
 )
 
 // All allowed values of ReprocessBehavior enum

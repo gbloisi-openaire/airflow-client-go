@@ -20,9 +20,9 @@ type DAGRunPatchStates string
 
 // List of DAGRunPatchStates
 const (
-	QUEUED DAGRunPatchStates = "queued"
-	SUCCESS DAGRunPatchStates = "success"
-	FAILED DAGRunPatchStates = "failed"
+	DAGRUNPATCHSTATES_QUEUED DAGRunPatchStates = "queued"
+	DAGRUNPATCHSTATES_SUCCESS DAGRunPatchStates = "success"
+	DAGRUNPATCHSTATES_FAILED DAGRunPatchStates = "failed"
 )
 
 // All allowed values of DAGRunPatchStates enum

@@ -23,13 +23,13 @@ import (
 // DAGParsingAPIService DAGParsingAPI service
 type DAGParsingAPIService service
 
-type ApiReparseDagFileRequest struct {
+type DAGParsingAPIReparseDagFileRequest struct {
 	ctx context.Context
 	ApiService *DAGParsingAPIService
 	fileToken string
 }
 
-func (r ApiReparseDagFileRequest) Execute() (interface{}, *http.Response, error) {
+func (r DAGParsingAPIReparseDagFileRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.ReparseDagFileExecute(r)
 }
 
@@ -40,10 +40,10 @@ Request re-parsing a DAG file.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fileToken
- @return ApiReparseDagFileRequest
+ @return DAGParsingAPIReparseDagFileRequest
 */
-func (a *DAGParsingAPIService) ReparseDagFile(ctx context.Context, fileToken string) ApiReparseDagFileRequest {
-	return ApiReparseDagFileRequest{
+func (a *DAGParsingAPIService) ReparseDagFile(ctx context.Context, fileToken string) DAGParsingAPIReparseDagFileRequest {
+	return DAGParsingAPIReparseDagFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		fileToken: fileToken,
@@ -52,7 +52,7 @@ func (a *DAGParsingAPIService) ReparseDagFile(ctx context.Context, fileToken str
 
 // Execute executes the request
 //  @return interface{}
-func (a *DAGParsingAPIService) ReparseDagFileExecute(r ApiReparseDagFileRequest) (interface{}, *http.Response, error) {
+func (a *DAGParsingAPIService) ReparseDagFileExecute(r DAGParsingAPIReparseDagFileRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

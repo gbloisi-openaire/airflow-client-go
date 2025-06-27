@@ -25,13 +25,13 @@ import (
 // EventLogAPIService EventLogAPI service
 type EventLogAPIService service
 
-type ApiGetEventLogRequest struct {
+type EventLogAPIGetEventLogRequest struct {
 	ctx context.Context
 	ApiService *EventLogAPIService
 	eventLogId int32
 }
 
-func (r ApiGetEventLogRequest) Execute() (*EventLogResponse, *http.Response, error) {
+func (r EventLogAPIGetEventLogRequest) Execute() (*EventLogResponse, *http.Response, error) {
 	return r.ApiService.GetEventLogExecute(r)
 }
 
@@ -40,10 +40,10 @@ GetEventLog Get Event Log
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param eventLogId
- @return ApiGetEventLogRequest
+ @return EventLogAPIGetEventLogRequest
 */
-func (a *EventLogAPIService) GetEventLog(ctx context.Context, eventLogId int32) ApiGetEventLogRequest {
-	return ApiGetEventLogRequest{
+func (a *EventLogAPIService) GetEventLog(ctx context.Context, eventLogId int32) EventLogAPIGetEventLogRequest {
+	return EventLogAPIGetEventLogRequest{
 		ApiService: a,
 		ctx: ctx,
 		eventLogId: eventLogId,
@@ -52,7 +52,7 @@ func (a *EventLogAPIService) GetEventLog(ctx context.Context, eventLogId int32) 
 
 // Execute executes the request
 //  @return EventLogResponse
-func (a *EventLogAPIService) GetEventLogExecute(r ApiGetEventLogRequest) (*EventLogResponse, *http.Response, error) {
+func (a *EventLogAPIService) GetEventLogExecute(r EventLogAPIGetEventLogRequest) (*EventLogResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -169,7 +169,7 @@ func (a *EventLogAPIService) GetEventLogExecute(r ApiGetEventLogRequest) (*Event
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetEventLogsRequest struct {
+type EventLogAPIGetEventLogsRequest struct {
 	ctx context.Context
 	ApiService *EventLogAPIService
 	limit *int32
@@ -188,77 +188,77 @@ type ApiGetEventLogsRequest struct {
 	after *time.Time
 }
 
-func (r ApiGetEventLogsRequest) Limit(limit int32) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) Limit(limit int32) EventLogAPIGetEventLogsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetEventLogsRequest) Offset(offset int32) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) Offset(offset int32) EventLogAPIGetEventLogsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetEventLogsRequest) OrderBy(orderBy string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) OrderBy(orderBy string) EventLogAPIGetEventLogsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetEventLogsRequest) DagId(dagId string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) DagId(dagId string) EventLogAPIGetEventLogsRequest {
 	r.dagId = &dagId
 	return r
 }
 
-func (r ApiGetEventLogsRequest) TaskId(taskId string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) TaskId(taskId string) EventLogAPIGetEventLogsRequest {
 	r.taskId = &taskId
 	return r
 }
 
-func (r ApiGetEventLogsRequest) RunId(runId string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) RunId(runId string) EventLogAPIGetEventLogsRequest {
 	r.runId = &runId
 	return r
 }
 
-func (r ApiGetEventLogsRequest) MapIndex(mapIndex int32) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) MapIndex(mapIndex int32) EventLogAPIGetEventLogsRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetEventLogsRequest) TryNumber(tryNumber int32) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) TryNumber(tryNumber int32) EventLogAPIGetEventLogsRequest {
 	r.tryNumber = &tryNumber
 	return r
 }
 
-func (r ApiGetEventLogsRequest) Owner(owner string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) Owner(owner string) EventLogAPIGetEventLogsRequest {
 	r.owner = &owner
 	return r
 }
 
-func (r ApiGetEventLogsRequest) Event(event string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) Event(event string) EventLogAPIGetEventLogsRequest {
 	r.event = &event
 	return r
 }
 
-func (r ApiGetEventLogsRequest) ExcludedEvents(excludedEvents []string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) ExcludedEvents(excludedEvents []string) EventLogAPIGetEventLogsRequest {
 	r.excludedEvents = &excludedEvents
 	return r
 }
 
-func (r ApiGetEventLogsRequest) IncludedEvents(includedEvents []string) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) IncludedEvents(includedEvents []string) EventLogAPIGetEventLogsRequest {
 	r.includedEvents = &includedEvents
 	return r
 }
 
-func (r ApiGetEventLogsRequest) Before(before time.Time) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) Before(before time.Time) EventLogAPIGetEventLogsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiGetEventLogsRequest) After(after time.Time) ApiGetEventLogsRequest {
+func (r EventLogAPIGetEventLogsRequest) After(after time.Time) EventLogAPIGetEventLogsRequest {
 	r.after = &after
 	return r
 }
 
-func (r ApiGetEventLogsRequest) Execute() (*EventLogCollectionResponse, *http.Response, error) {
+func (r EventLogAPIGetEventLogsRequest) Execute() (*EventLogCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetEventLogsExecute(r)
 }
 
@@ -268,10 +268,10 @@ GetEventLogs Get Event Logs
 Get all Event Logs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetEventLogsRequest
+ @return EventLogAPIGetEventLogsRequest
 */
-func (a *EventLogAPIService) GetEventLogs(ctx context.Context) ApiGetEventLogsRequest {
-	return ApiGetEventLogsRequest{
+func (a *EventLogAPIService) GetEventLogs(ctx context.Context) EventLogAPIGetEventLogsRequest {
+	return EventLogAPIGetEventLogsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -279,7 +279,7 @@ func (a *EventLogAPIService) GetEventLogs(ctx context.Context) ApiGetEventLogsRe
 
 // Execute executes the request
 //  @return EventLogCollectionResponse
-func (a *EventLogAPIService) GetEventLogsExecute(r ApiGetEventLogsRequest) (*EventLogCollectionResponse, *http.Response, error) {
+func (a *EventLogAPIService) GetEventLogsExecute(r EventLogAPIGetEventLogsRequest) (*EventLogCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

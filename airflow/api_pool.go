@@ -24,18 +24,18 @@ import (
 // PoolAPIService PoolAPI service
 type PoolAPIService service
 
-type ApiBulkPoolsRequest struct {
+type PoolAPIBulkPoolsRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	bulkBodyPoolBody *BulkBodyPoolBody
 }
 
-func (r ApiBulkPoolsRequest) BulkBodyPoolBody(bulkBodyPoolBody BulkBodyPoolBody) ApiBulkPoolsRequest {
+func (r PoolAPIBulkPoolsRequest) BulkBodyPoolBody(bulkBodyPoolBody BulkBodyPoolBody) PoolAPIBulkPoolsRequest {
 	r.bulkBodyPoolBody = &bulkBodyPoolBody
 	return r
 }
 
-func (r ApiBulkPoolsRequest) Execute() (*BulkResponse, *http.Response, error) {
+func (r PoolAPIBulkPoolsRequest) Execute() (*BulkResponse, *http.Response, error) {
 	return r.ApiService.BulkPoolsExecute(r)
 }
 
@@ -45,10 +45,10 @@ BulkPools Bulk Pools
 Bulk create, update, and delete pools.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBulkPoolsRequest
+ @return PoolAPIBulkPoolsRequest
 */
-func (a *PoolAPIService) BulkPools(ctx context.Context) ApiBulkPoolsRequest {
-	return ApiBulkPoolsRequest{
+func (a *PoolAPIService) BulkPools(ctx context.Context) PoolAPIBulkPoolsRequest {
+	return PoolAPIBulkPoolsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +56,7 @@ func (a *PoolAPIService) BulkPools(ctx context.Context) ApiBulkPoolsRequest {
 
 // Execute executes the request
 //  @return BulkResponse
-func (a *PoolAPIService) BulkPoolsExecute(r ApiBulkPoolsRequest) (*BulkResponse, *http.Response, error) {
+func (a *PoolAPIService) BulkPoolsExecute(r PoolAPIBulkPoolsRequest) (*BulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -166,13 +166,13 @@ func (a *PoolAPIService) BulkPoolsExecute(r ApiBulkPoolsRequest) (*BulkResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeletePoolRequest struct {
+type PoolAPIDeletePoolRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	poolName string
 }
 
-func (r ApiDeletePoolRequest) Execute() (*http.Response, error) {
+func (r PoolAPIDeletePoolRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeletePoolExecute(r)
 }
 
@@ -183,10 +183,10 @@ Delete a pool entry.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param poolName
- @return ApiDeletePoolRequest
+ @return PoolAPIDeletePoolRequest
 */
-func (a *PoolAPIService) DeletePool(ctx context.Context, poolName string) ApiDeletePoolRequest {
-	return ApiDeletePoolRequest{
+func (a *PoolAPIService) DeletePool(ctx context.Context, poolName string) PoolAPIDeletePoolRequest {
+	return PoolAPIDeletePoolRequest{
 		ApiService: a,
 		ctx: ctx,
 		poolName: poolName,
@@ -194,7 +194,7 @@ func (a *PoolAPIService) DeletePool(ctx context.Context, poolName string) ApiDel
 }
 
 // Execute executes the request
-func (a *PoolAPIService) DeletePoolExecute(r ApiDeletePoolRequest) (*http.Response, error) {
+func (a *PoolAPIService) DeletePoolExecute(r PoolAPIDeletePoolRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -312,13 +312,13 @@ func (a *PoolAPIService) DeletePoolExecute(r ApiDeletePoolRequest) (*http.Respon
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetPoolRequest struct {
+type PoolAPIGetPoolRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	poolName string
 }
 
-func (r ApiGetPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
+func (r PoolAPIGetPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
 	return r.ApiService.GetPoolExecute(r)
 }
 
@@ -329,10 +329,10 @@ Get a pool.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param poolName
- @return ApiGetPoolRequest
+ @return PoolAPIGetPoolRequest
 */
-func (a *PoolAPIService) GetPool(ctx context.Context, poolName string) ApiGetPoolRequest {
-	return ApiGetPoolRequest{
+func (a *PoolAPIService) GetPool(ctx context.Context, poolName string) PoolAPIGetPoolRequest {
+	return PoolAPIGetPoolRequest{
 		ApiService: a,
 		ctx: ctx,
 		poolName: poolName,
@@ -341,7 +341,7 @@ func (a *PoolAPIService) GetPool(ctx context.Context, poolName string) ApiGetPoo
 
 // Execute executes the request
 //  @return PoolResponse
-func (a *PoolAPIService) GetPoolExecute(r ApiGetPoolRequest) (*PoolResponse, *http.Response, error) {
+func (a *PoolAPIService) GetPoolExecute(r PoolAPIGetPoolRequest) (*PoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -458,7 +458,7 @@ func (a *PoolAPIService) GetPoolExecute(r ApiGetPoolRequest) (*PoolResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetPoolsRequest struct {
+type PoolAPIGetPoolsRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	limit *int32
@@ -467,28 +467,28 @@ type ApiGetPoolsRequest struct {
 	poolNamePattern *string
 }
 
-func (r ApiGetPoolsRequest) Limit(limit int32) ApiGetPoolsRequest {
+func (r PoolAPIGetPoolsRequest) Limit(limit int32) PoolAPIGetPoolsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetPoolsRequest) Offset(offset int32) ApiGetPoolsRequest {
+func (r PoolAPIGetPoolsRequest) Offset(offset int32) PoolAPIGetPoolsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetPoolsRequest) OrderBy(orderBy string) ApiGetPoolsRequest {
+func (r PoolAPIGetPoolsRequest) OrderBy(orderBy string) PoolAPIGetPoolsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetPoolsRequest) PoolNamePattern(poolNamePattern string) ApiGetPoolsRequest {
+func (r PoolAPIGetPoolsRequest) PoolNamePattern(poolNamePattern string) PoolAPIGetPoolsRequest {
 	r.poolNamePattern = &poolNamePattern
 	return r
 }
 
-func (r ApiGetPoolsRequest) Execute() (*PoolCollectionResponse, *http.Response, error) {
+func (r PoolAPIGetPoolsRequest) Execute() (*PoolCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetPoolsExecute(r)
 }
 
@@ -498,10 +498,10 @@ GetPools Get Pools
 Get all pools entries.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetPoolsRequest
+ @return PoolAPIGetPoolsRequest
 */
-func (a *PoolAPIService) GetPools(ctx context.Context) ApiGetPoolsRequest {
-	return ApiGetPoolsRequest{
+func (a *PoolAPIService) GetPools(ctx context.Context) PoolAPIGetPoolsRequest {
+	return PoolAPIGetPoolsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -509,7 +509,7 @@ func (a *PoolAPIService) GetPools(ctx context.Context) ApiGetPoolsRequest {
 
 // Execute executes the request
 //  @return PoolCollectionResponse
-func (a *PoolAPIService) GetPoolsExecute(r ApiGetPoolsRequest) (*PoolCollectionResponse, *http.Response, error) {
+func (a *PoolAPIService) GetPoolsExecute(r PoolAPIGetPoolsRequest) (*PoolCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -646,7 +646,7 @@ func (a *PoolAPIService) GetPoolsExecute(r ApiGetPoolsRequest) (*PoolCollectionR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchPoolRequest struct {
+type PoolAPIPatchPoolRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	poolName string
@@ -654,17 +654,17 @@ type ApiPatchPoolRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchPoolRequest) PoolPatchBody(poolPatchBody PoolPatchBody) ApiPatchPoolRequest {
+func (r PoolAPIPatchPoolRequest) PoolPatchBody(poolPatchBody PoolPatchBody) PoolAPIPatchPoolRequest {
 	r.poolPatchBody = &poolPatchBody
 	return r
 }
 
-func (r ApiPatchPoolRequest) UpdateMask(updateMask []string) ApiPatchPoolRequest {
+func (r PoolAPIPatchPoolRequest) UpdateMask(updateMask []string) PoolAPIPatchPoolRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
+func (r PoolAPIPatchPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
 	return r.ApiService.PatchPoolExecute(r)
 }
 
@@ -675,10 +675,10 @@ Update a Pool.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param poolName
- @return ApiPatchPoolRequest
+ @return PoolAPIPatchPoolRequest
 */
-func (a *PoolAPIService) PatchPool(ctx context.Context, poolName string) ApiPatchPoolRequest {
-	return ApiPatchPoolRequest{
+func (a *PoolAPIService) PatchPool(ctx context.Context, poolName string) PoolAPIPatchPoolRequest {
+	return PoolAPIPatchPoolRequest{
 		ApiService: a,
 		ctx: ctx,
 		poolName: poolName,
@@ -687,7 +687,7 @@ func (a *PoolAPIService) PatchPool(ctx context.Context, poolName string) ApiPatc
 
 // Execute executes the request
 //  @return PoolResponse
-func (a *PoolAPIService) PatchPoolExecute(r ApiPatchPoolRequest) (*PoolResponse, *http.Response, error) {
+func (a *PoolAPIService) PatchPoolExecute(r PoolAPIPatchPoolRequest) (*PoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -831,18 +831,18 @@ func (a *PoolAPIService) PatchPoolExecute(r ApiPatchPoolRequest) (*PoolResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostPoolRequest struct {
+type PoolAPIPostPoolRequest struct {
 	ctx context.Context
 	ApiService *PoolAPIService
 	poolBody *PoolBody
 }
 
-func (r ApiPostPoolRequest) PoolBody(poolBody PoolBody) ApiPostPoolRequest {
+func (r PoolAPIPostPoolRequest) PoolBody(poolBody PoolBody) PoolAPIPostPoolRequest {
 	r.poolBody = &poolBody
 	return r
 }
 
-func (r ApiPostPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
+func (r PoolAPIPostPoolRequest) Execute() (*PoolResponse, *http.Response, error) {
 	return r.ApiService.PostPoolExecute(r)
 }
 
@@ -852,10 +852,10 @@ PostPool Post Pool
 Create a Pool.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostPoolRequest
+ @return PoolAPIPostPoolRequest
 */
-func (a *PoolAPIService) PostPool(ctx context.Context) ApiPostPoolRequest {
-	return ApiPostPoolRequest{
+func (a *PoolAPIService) PostPool(ctx context.Context) PoolAPIPostPoolRequest {
+	return PoolAPIPostPoolRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -863,7 +863,7 @@ func (a *PoolAPIService) PostPool(ctx context.Context) ApiPostPoolRequest {
 
 // Execute executes the request
 //  @return PoolResponse
-func (a *PoolAPIService) PostPoolExecute(r ApiPostPoolRequest) (*PoolResponse, *http.Response, error) {
+func (a *PoolAPIService) PostPoolExecute(r PoolAPIPostPoolRequest) (*PoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

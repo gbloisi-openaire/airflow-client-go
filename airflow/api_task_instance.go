@@ -25,7 +25,7 @@ import (
 // TaskInstanceAPIService TaskInstanceAPI service
 type TaskInstanceAPIService service
 
-type ApiBulkTaskInstancesRequest struct {
+type TaskInstanceAPIBulkTaskInstancesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -33,12 +33,12 @@ type ApiBulkTaskInstancesRequest struct {
 	bulkBodyBulkTaskInstanceBody *BulkBodyBulkTaskInstanceBody
 }
 
-func (r ApiBulkTaskInstancesRequest) BulkBodyBulkTaskInstanceBody(bulkBodyBulkTaskInstanceBody BulkBodyBulkTaskInstanceBody) ApiBulkTaskInstancesRequest {
+func (r TaskInstanceAPIBulkTaskInstancesRequest) BulkBodyBulkTaskInstanceBody(bulkBodyBulkTaskInstanceBody BulkBodyBulkTaskInstanceBody) TaskInstanceAPIBulkTaskInstancesRequest {
 	r.bulkBodyBulkTaskInstanceBody = &bulkBodyBulkTaskInstanceBody
 	return r
 }
 
-func (r ApiBulkTaskInstancesRequest) Execute() (*BulkResponse, *http.Response, error) {
+func (r TaskInstanceAPIBulkTaskInstancesRequest) Execute() (*BulkResponse, *http.Response, error) {
 	return r.ApiService.BulkTaskInstancesExecute(r)
 }
 
@@ -50,10 +50,10 @@ Bulk update, and delete task instances.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param dagRunId
- @return ApiBulkTaskInstancesRequest
+ @return TaskInstanceAPIBulkTaskInstancesRequest
 */
-func (a *TaskInstanceAPIService) BulkTaskInstances(ctx context.Context, dagId string, dagRunId string) ApiBulkTaskInstancesRequest {
-	return ApiBulkTaskInstancesRequest{
+func (a *TaskInstanceAPIService) BulkTaskInstances(ctx context.Context, dagId string, dagRunId string) TaskInstanceAPIBulkTaskInstancesRequest {
+	return TaskInstanceAPIBulkTaskInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -63,7 +63,7 @@ func (a *TaskInstanceAPIService) BulkTaskInstances(ctx context.Context, dagId st
 
 // Execute executes the request
 //  @return BulkResponse
-func (a *TaskInstanceAPIService) BulkTaskInstancesExecute(r ApiBulkTaskInstancesRequest) (*BulkResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) BulkTaskInstancesExecute(r TaskInstanceAPIBulkTaskInstancesRequest) (*BulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -175,7 +175,7 @@ func (a *TaskInstanceAPIService) BulkTaskInstancesExecute(r ApiBulkTaskInstances
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteTaskInstanceRequest struct {
+type TaskInstanceAPIDeleteTaskInstanceRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -184,12 +184,12 @@ type ApiDeleteTaskInstanceRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiDeleteTaskInstanceRequest) MapIndex(mapIndex int32) ApiDeleteTaskInstanceRequest {
+func (r TaskInstanceAPIDeleteTaskInstanceRequest) MapIndex(mapIndex int32) TaskInstanceAPIDeleteTaskInstanceRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiDeleteTaskInstanceRequest) Execute() (interface{}, *http.Response, error) {
+func (r TaskInstanceAPIDeleteTaskInstanceRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteTaskInstanceExecute(r)
 }
 
@@ -202,10 +202,10 @@ Delete a task instance.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiDeleteTaskInstanceRequest
+ @return TaskInstanceAPIDeleteTaskInstanceRequest
 */
-func (a *TaskInstanceAPIService) DeleteTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) ApiDeleteTaskInstanceRequest {
-	return ApiDeleteTaskInstanceRequest{
+func (a *TaskInstanceAPIService) DeleteTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIDeleteTaskInstanceRequest {
+	return TaskInstanceAPIDeleteTaskInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -216,7 +216,7 @@ func (a *TaskInstanceAPIService) DeleteTaskInstance(ctx context.Context, dagId s
 
 // Execute executes the request
 //  @return interface{}
-func (a *TaskInstanceAPIService) DeleteTaskInstanceExecute(r ApiDeleteTaskInstanceRequest) (interface{}, *http.Response, error) {
+func (a *TaskInstanceAPIService) DeleteTaskInstanceExecute(r TaskInstanceAPIDeleteTaskInstanceRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -341,7 +341,7 @@ func (a *TaskInstanceAPIService) DeleteTaskInstanceExecute(r ApiDeleteTaskInstan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetExternalLogUrlRequest struct {
+type TaskInstanceAPIGetExternalLogUrlRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -351,12 +351,12 @@ type ApiGetExternalLogUrlRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiGetExternalLogUrlRequest) MapIndex(mapIndex int32) ApiGetExternalLogUrlRequest {
+func (r TaskInstanceAPIGetExternalLogUrlRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetExternalLogUrlRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetExternalLogUrlRequest) Execute() (*ExternalLogUrlResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetExternalLogUrlRequest) Execute() (*ExternalLogUrlResponse, *http.Response, error) {
 	return r.ApiService.GetExternalLogUrlExecute(r)
 }
 
@@ -370,10 +370,10 @@ Get external log URL for a specific task instance.
  @param dagRunId
  @param taskId
  @param tryNumber
- @return ApiGetExternalLogUrlRequest
+ @return TaskInstanceAPIGetExternalLogUrlRequest
 */
-func (a *TaskInstanceAPIService) GetExternalLogUrl(ctx context.Context, dagId string, dagRunId string, taskId string, tryNumber int32) ApiGetExternalLogUrlRequest {
-	return ApiGetExternalLogUrlRequest{
+func (a *TaskInstanceAPIService) GetExternalLogUrl(ctx context.Context, dagId string, dagRunId string, taskId string, tryNumber int32) TaskInstanceAPIGetExternalLogUrlRequest {
+	return TaskInstanceAPIGetExternalLogUrlRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -385,7 +385,7 @@ func (a *TaskInstanceAPIService) GetExternalLogUrl(ctx context.Context, dagId st
 
 // Execute executes the request
 //  @return ExternalLogUrlResponse
-func (a *TaskInstanceAPIService) GetExternalLogUrlExecute(r ApiGetExternalLogUrlRequest) (*ExternalLogUrlResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetExternalLogUrlExecute(r TaskInstanceAPIGetExternalLogUrlRequest) (*ExternalLogUrlResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -522,7 +522,7 @@ func (a *TaskInstanceAPIService) GetExternalLogUrlExecute(r ApiGetExternalLogUrl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetExtraLinksRequest struct {
+type TaskInstanceAPIGetExtraLinksRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -531,12 +531,12 @@ type ApiGetExtraLinksRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiGetExtraLinksRequest) MapIndex(mapIndex int32) ApiGetExtraLinksRequest {
+func (r TaskInstanceAPIGetExtraLinksRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetExtraLinksRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetExtraLinksRequest) Execute() (*ExtraLinkCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetExtraLinksRequest) Execute() (*ExtraLinkCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetExtraLinksExecute(r)
 }
 
@@ -549,10 +549,10 @@ Get extra links for task instance.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetExtraLinksRequest
+ @return TaskInstanceAPIGetExtraLinksRequest
 */
-func (a *TaskInstanceAPIService) GetExtraLinks(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetExtraLinksRequest {
-	return ApiGetExtraLinksRequest{
+func (a *TaskInstanceAPIService) GetExtraLinks(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIGetExtraLinksRequest {
+	return TaskInstanceAPIGetExtraLinksRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -563,7 +563,7 @@ func (a *TaskInstanceAPIService) GetExtraLinks(ctx context.Context, dagId string
 
 // Execute executes the request
 //  @return ExtraLinkCollectionResponse
-func (a *TaskInstanceAPIService) GetExtraLinksExecute(r ApiGetExtraLinksRequest) (*ExtraLinkCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetExtraLinksExecute(r TaskInstanceAPIGetExtraLinksRequest) (*ExtraLinkCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -688,7 +688,7 @@ func (a *TaskInstanceAPIService) GetExtraLinksExecute(r ApiGetExtraLinksRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetLogRequest struct {
+type TaskInstanceAPIGetLogRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -701,27 +701,27 @@ type ApiGetLogRequest struct {
 	accept *string
 }
 
-func (r ApiGetLogRequest) FullContent(fullContent bool) ApiGetLogRequest {
+func (r TaskInstanceAPIGetLogRequest) FullContent(fullContent bool) TaskInstanceAPIGetLogRequest {
 	r.fullContent = &fullContent
 	return r
 }
 
-func (r ApiGetLogRequest) MapIndex(mapIndex int32) ApiGetLogRequest {
+func (r TaskInstanceAPIGetLogRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetLogRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetLogRequest) Token(token string) ApiGetLogRequest {
+func (r TaskInstanceAPIGetLogRequest) Token(token string) TaskInstanceAPIGetLogRequest {
 	r.token = &token
 	return r
 }
 
-func (r ApiGetLogRequest) Accept(accept string) ApiGetLogRequest {
+func (r TaskInstanceAPIGetLogRequest) Accept(accept string) TaskInstanceAPIGetLogRequest {
 	r.accept = &accept
 	return r
 }
 
-func (r ApiGetLogRequest) Execute() (*TaskInstancesLogResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetLogRequest) Execute() (*TaskInstancesLogResponse, *http.Response, error) {
 	return r.ApiService.GetLogExecute(r)
 }
 
@@ -735,10 +735,10 @@ Get logs for a specific task instance.
  @param dagRunId
  @param taskId
  @param tryNumber
- @return ApiGetLogRequest
+ @return TaskInstanceAPIGetLogRequest
 */
-func (a *TaskInstanceAPIService) GetLog(ctx context.Context, dagId string, dagRunId string, taskId string, tryNumber int32) ApiGetLogRequest {
-	return ApiGetLogRequest{
+func (a *TaskInstanceAPIService) GetLog(ctx context.Context, dagId string, dagRunId string, taskId string, tryNumber int32) TaskInstanceAPIGetLogRequest {
+	return TaskInstanceAPIGetLogRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -750,7 +750,7 @@ func (a *TaskInstanceAPIService) GetLog(ctx context.Context, dagId string, dagRu
 
 // Execute executes the request
 //  @return TaskInstancesLogResponse
-func (a *TaskInstanceAPIService) GetLogExecute(r ApiGetLogRequest) (*TaskInstancesLogResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetLogExecute(r TaskInstanceAPIGetLogRequest) (*TaskInstancesLogResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -888,7 +888,7 @@ func (a *TaskInstanceAPIService) GetLogExecute(r ApiGetLogRequest) (*TaskInstanc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMappedTaskInstanceRequest struct {
+type TaskInstanceAPIGetMappedTaskInstanceRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -897,7 +897,7 @@ type ApiGetMappedTaskInstanceRequest struct {
 	mapIndex int32
 }
 
-func (r ApiGetMappedTaskInstanceRequest) Execute() (*TaskInstanceResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetMappedTaskInstanceRequest) Execute() (*TaskInstanceResponse, *http.Response, error) {
 	return r.ApiService.GetMappedTaskInstanceExecute(r)
 }
 
@@ -911,10 +911,10 @@ Get task instance.
  @param dagRunId
  @param taskId
  @param mapIndex
- @return ApiGetMappedTaskInstanceRequest
+ @return TaskInstanceAPIGetMappedTaskInstanceRequest
 */
-func (a *TaskInstanceAPIService) GetMappedTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) ApiGetMappedTaskInstanceRequest {
-	return ApiGetMappedTaskInstanceRequest{
+func (a *TaskInstanceAPIService) GetMappedTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) TaskInstanceAPIGetMappedTaskInstanceRequest {
+	return TaskInstanceAPIGetMappedTaskInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -926,7 +926,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstance(ctx context.Context, dagI
 
 // Execute executes the request
 //  @return TaskInstanceResponse
-func (a *TaskInstanceAPIService) GetMappedTaskInstanceExecute(r ApiGetMappedTaskInstanceRequest) (*TaskInstanceResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetMappedTaskInstanceExecute(r TaskInstanceAPIGetMappedTaskInstanceRequest) (*TaskInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1046,7 +1046,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstanceExecute(r ApiGetMappedTask
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMappedTaskInstanceTriesRequest struct {
+type TaskInstanceAPIGetMappedTaskInstanceTriesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -1055,7 +1055,7 @@ type ApiGetMappedTaskInstanceTriesRequest struct {
 	mapIndex int32
 }
 
-func (r ApiGetMappedTaskInstanceTriesRequest) Execute() (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetMappedTaskInstanceTriesRequest) Execute() (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetMappedTaskInstanceTriesExecute(r)
 }
 
@@ -1067,10 +1067,10 @@ GetMappedTaskInstanceTries Get Mapped Task Instance Tries
  @param dagRunId
  @param taskId
  @param mapIndex
- @return ApiGetMappedTaskInstanceTriesRequest
+ @return TaskInstanceAPIGetMappedTaskInstanceTriesRequest
 */
-func (a *TaskInstanceAPIService) GetMappedTaskInstanceTries(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) ApiGetMappedTaskInstanceTriesRequest {
-	return ApiGetMappedTaskInstanceTriesRequest{
+func (a *TaskInstanceAPIService) GetMappedTaskInstanceTries(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) TaskInstanceAPIGetMappedTaskInstanceTriesRequest {
+	return TaskInstanceAPIGetMappedTaskInstanceTriesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1082,7 +1082,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstanceTries(ctx context.Context,
 
 // Execute executes the request
 //  @return TaskInstanceHistoryCollectionResponse
-func (a *TaskInstanceAPIService) GetMappedTaskInstanceTriesExecute(r ApiGetMappedTaskInstanceTriesRequest) (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetMappedTaskInstanceTriesExecute(r TaskInstanceAPIGetMappedTaskInstanceTriesRequest) (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1202,7 +1202,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstanceTriesExecute(r ApiGetMappe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMappedTaskInstanceTryDetailsRequest struct {
+type TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -1212,7 +1212,7 @@ type ApiGetMappedTaskInstanceTryDetailsRequest struct {
 	mapIndex int32
 }
 
-func (r ApiGetMappedTaskInstanceTryDetailsRequest) Execute() (*TaskInstanceHistoryResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest) Execute() (*TaskInstanceHistoryResponse, *http.Response, error) {
 	return r.ApiService.GetMappedTaskInstanceTryDetailsExecute(r)
 }
 
@@ -1225,10 +1225,10 @@ GetMappedTaskInstanceTryDetails Get Mapped Task Instance Try Details
  @param taskId
  @param taskTryNumber
  @param mapIndex
- @return ApiGetMappedTaskInstanceTryDetailsRequest
+ @return TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest
 */
-func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetails(ctx context.Context, dagId string, dagRunId string, taskId string, taskTryNumber int32, mapIndex int32) ApiGetMappedTaskInstanceTryDetailsRequest {
-	return ApiGetMappedTaskInstanceTryDetailsRequest{
+func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetails(ctx context.Context, dagId string, dagRunId string, taskId string, taskTryNumber int32, mapIndex int32) TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest {
+	return TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1241,7 +1241,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetails(ctx context.Con
 
 // Execute executes the request
 //  @return TaskInstanceHistoryResponse
-func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetailsExecute(r ApiGetMappedTaskInstanceTryDetailsRequest) (*TaskInstanceHistoryResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetailsExecute(r TaskInstanceAPIGetMappedTaskInstanceTryDetailsRequest) (*TaskInstanceHistoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1362,7 +1362,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstanceTryDetailsExecute(r ApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMappedTaskInstancesRequest struct {
+type TaskInstanceAPIGetMappedTaskInstancesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -1390,107 +1390,107 @@ type ApiGetMappedTaskInstancesRequest struct {
 	orderBy *string
 }
 
-func (r ApiGetMappedTaskInstancesRequest) RunAfterGte(runAfterGte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) RunAfterGte(runAfterGte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.runAfterGte = &runAfterGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) RunAfterLte(runAfterLte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) RunAfterLte(runAfterLte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.runAfterLte = &runAfterLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) LogicalDateGte(logicalDateGte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) LogicalDateGte(logicalDateGte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.logicalDateGte = &logicalDateGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) LogicalDateLte(logicalDateLte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) LogicalDateLte(logicalDateLte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.logicalDateLte = &logicalDateLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) StartDateGte(startDateGte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) StartDateGte(startDateGte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.startDateGte = &startDateGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) StartDateLte(startDateLte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) StartDateLte(startDateLte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.startDateLte = &startDateLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) EndDateGte(endDateGte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) EndDateGte(endDateGte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.endDateGte = &endDateGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) EndDateLte(endDateLte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) EndDateLte(endDateLte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.endDateLte = &endDateLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) UpdatedAtGte(updatedAtGte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) UpdatedAtGte(updatedAtGte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.updatedAtGte = &updatedAtGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) UpdatedAtLte(updatedAtLte time.Time) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) UpdatedAtLte(updatedAtLte time.Time) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.updatedAtLte = &updatedAtLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) DurationGte(durationGte float32) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) DurationGte(durationGte float32) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.durationGte = &durationGte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) DurationLte(durationLte float32) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) DurationLte(durationLte float32) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.durationLte = &durationLte
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) State(state []string) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) State(state []string) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.state = &state
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Pool(pool []*string) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Pool(pool []*string) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.pool = &pool
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Queue(queue []*string) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Queue(queue []*string) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.queue = &queue
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Executor(executor []*string) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Executor(executor []*string) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.executor = &executor
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) VersionNumber(versionNumber []*int32) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) VersionNumber(versionNumber []*int32) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.versionNumber = &versionNumber
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Limit(limit int32) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Limit(limit int32) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Offset(offset int32) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Offset(offset int32) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) OrderBy(orderBy string) ApiGetMappedTaskInstancesRequest {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) OrderBy(orderBy string) TaskInstanceAPIGetMappedTaskInstancesRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetMappedTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetMappedTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetMappedTaskInstancesExecute(r)
 }
 
@@ -1503,10 +1503,10 @@ Get list of mapped task instances.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetMappedTaskInstancesRequest
+ @return TaskInstanceAPIGetMappedTaskInstancesRequest
 */
-func (a *TaskInstanceAPIService) GetMappedTaskInstances(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetMappedTaskInstancesRequest {
-	return ApiGetMappedTaskInstancesRequest{
+func (a *TaskInstanceAPIService) GetMappedTaskInstances(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIGetMappedTaskInstancesRequest {
+	return TaskInstanceAPIGetMappedTaskInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1517,7 +1517,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstances(ctx context.Context, dag
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) GetMappedTaskInstancesExecute(r ApiGetMappedTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetMappedTaskInstancesExecute(r TaskInstanceAPIGetMappedTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1745,7 +1745,7 @@ func (a *TaskInstanceAPIService) GetMappedTaskInstancesExecute(r ApiGetMappedTas
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstanceRequest struct {
+type TaskInstanceAPIGetTaskInstanceRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -1753,7 +1753,7 @@ type ApiGetTaskInstanceRequest struct {
 	taskId string
 }
 
-func (r ApiGetTaskInstanceRequest) Execute() (*TaskInstanceResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstanceRequest) Execute() (*TaskInstanceResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstanceExecute(r)
 }
 
@@ -1766,10 +1766,10 @@ Get task instance.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetTaskInstanceRequest
+ @return TaskInstanceAPIGetTaskInstanceRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetTaskInstanceRequest {
-	return ApiGetTaskInstanceRequest{
+func (a *TaskInstanceAPIService) GetTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIGetTaskInstanceRequest {
+	return TaskInstanceAPIGetTaskInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1780,7 +1780,7 @@ func (a *TaskInstanceAPIService) GetTaskInstance(ctx context.Context, dagId stri
 
 // Execute executes the request
 //  @return TaskInstanceResponse
-func (a *TaskInstanceAPIService) GetTaskInstanceExecute(r ApiGetTaskInstanceRequest) (*TaskInstanceResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstanceExecute(r TaskInstanceAPIGetTaskInstanceRequest) (*TaskInstanceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1899,7 +1899,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceExecute(r ApiGetTaskInstanceRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstanceDependenciesRequest struct {
+type TaskInstanceAPIGetTaskInstanceDependenciesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -1908,12 +1908,12 @@ type ApiGetTaskInstanceDependenciesRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiGetTaskInstanceDependenciesRequest) MapIndex(mapIndex int32) ApiGetTaskInstanceDependenciesRequest {
+func (r TaskInstanceAPIGetTaskInstanceDependenciesRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetTaskInstanceDependenciesRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetTaskInstanceDependenciesRequest) Execute() (*TaskDependencyCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstanceDependenciesRequest) Execute() (*TaskDependencyCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstanceDependenciesExecute(r)
 }
 
@@ -1926,10 +1926,10 @@ Get dependencies blocking task from getting scheduled.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetTaskInstanceDependenciesRequest
+ @return TaskInstanceAPIGetTaskInstanceDependenciesRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstanceDependencies(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetTaskInstanceDependenciesRequest {
-	return ApiGetTaskInstanceDependenciesRequest{
+func (a *TaskInstanceAPIService) GetTaskInstanceDependencies(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIGetTaskInstanceDependenciesRequest {
+	return TaskInstanceAPIGetTaskInstanceDependenciesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1940,7 +1940,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceDependencies(ctx context.Context
 
 // Execute executes the request
 //  @return TaskDependencyCollectionResponse
-func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesExecute(r ApiGetTaskInstanceDependenciesRequest) (*TaskDependencyCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesExecute(r TaskInstanceAPIGetTaskInstanceDependenciesRequest) (*TaskDependencyCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2065,7 +2065,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesExecute(r ApiGetTask
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstanceDependenciesByMapIndexRequest struct {
+type TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -2074,7 +2074,7 @@ type ApiGetTaskInstanceDependenciesByMapIndexRequest struct {
 	mapIndex int32
 }
 
-func (r ApiGetTaskInstanceDependenciesByMapIndexRequest) Execute() (*TaskDependencyCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest) Execute() (*TaskDependencyCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstanceDependenciesByMapIndexExecute(r)
 }
 
@@ -2088,10 +2088,10 @@ Get dependencies blocking task from getting scheduled.
  @param dagRunId
  @param taskId
  @param mapIndex
- @return ApiGetTaskInstanceDependenciesByMapIndexRequest
+ @return TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) ApiGetTaskInstanceDependenciesByMapIndexRequest {
-	return ApiGetTaskInstanceDependenciesByMapIndexRequest{
+func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest {
+	return TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -2103,7 +2103,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndex(ctx conte
 
 // Execute executes the request
 //  @return TaskDependencyCollectionResponse
-func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndexExecute(r ApiGetTaskInstanceDependenciesByMapIndexRequest) (*TaskDependencyCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndexExecute(r TaskInstanceAPIGetTaskInstanceDependenciesByMapIndexRequest) (*TaskDependencyCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2223,7 +2223,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceDependenciesByMapIndexExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstanceTriesRequest struct {
+type TaskInstanceAPIGetTaskInstanceTriesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -2232,12 +2232,12 @@ type ApiGetTaskInstanceTriesRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiGetTaskInstanceTriesRequest) MapIndex(mapIndex int32) ApiGetTaskInstanceTriesRequest {
+func (r TaskInstanceAPIGetTaskInstanceTriesRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetTaskInstanceTriesRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetTaskInstanceTriesRequest) Execute() (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstanceTriesRequest) Execute() (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstanceTriesExecute(r)
 }
 
@@ -2250,10 +2250,10 @@ Get list of task instances history.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiGetTaskInstanceTriesRequest
+ @return TaskInstanceAPIGetTaskInstanceTriesRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstanceTries(ctx context.Context, dagId string, dagRunId string, taskId string) ApiGetTaskInstanceTriesRequest {
-	return ApiGetTaskInstanceTriesRequest{
+func (a *TaskInstanceAPIService) GetTaskInstanceTries(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIGetTaskInstanceTriesRequest {
+	return TaskInstanceAPIGetTaskInstanceTriesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -2264,7 +2264,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceTries(ctx context.Context, dagId
 
 // Execute executes the request
 //  @return TaskInstanceHistoryCollectionResponse
-func (a *TaskInstanceAPIService) GetTaskInstanceTriesExecute(r ApiGetTaskInstanceTriesRequest) (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstanceTriesExecute(r TaskInstanceAPIGetTaskInstanceTriesRequest) (*TaskInstanceHistoryCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2389,7 +2389,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceTriesExecute(r ApiGetTaskInstanc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstanceTryDetailsRequest struct {
+type TaskInstanceAPIGetTaskInstanceTryDetailsRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -2399,12 +2399,12 @@ type ApiGetTaskInstanceTryDetailsRequest struct {
 	mapIndex *int32
 }
 
-func (r ApiGetTaskInstanceTryDetailsRequest) MapIndex(mapIndex int32) ApiGetTaskInstanceTryDetailsRequest {
+func (r TaskInstanceAPIGetTaskInstanceTryDetailsRequest) MapIndex(mapIndex int32) TaskInstanceAPIGetTaskInstanceTryDetailsRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiGetTaskInstanceTryDetailsRequest) Execute() (*TaskInstanceHistoryResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstanceTryDetailsRequest) Execute() (*TaskInstanceHistoryResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstanceTryDetailsExecute(r)
 }
 
@@ -2418,10 +2418,10 @@ Get task instance details by try number.
  @param dagRunId
  @param taskId
  @param taskTryNumber
- @return ApiGetTaskInstanceTryDetailsRequest
+ @return TaskInstanceAPIGetTaskInstanceTryDetailsRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstanceTryDetails(ctx context.Context, dagId string, dagRunId string, taskId string, taskTryNumber int32) ApiGetTaskInstanceTryDetailsRequest {
-	return ApiGetTaskInstanceTryDetailsRequest{
+func (a *TaskInstanceAPIService) GetTaskInstanceTryDetails(ctx context.Context, dagId string, dagRunId string, taskId string, taskTryNumber int32) TaskInstanceAPIGetTaskInstanceTryDetailsRequest {
+	return TaskInstanceAPIGetTaskInstanceTryDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -2433,7 +2433,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceTryDetails(ctx context.Context, 
 
 // Execute executes the request
 //  @return TaskInstanceHistoryResponse
-func (a *TaskInstanceAPIService) GetTaskInstanceTryDetailsExecute(r ApiGetTaskInstanceTryDetailsRequest) (*TaskInstanceHistoryResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstanceTryDetailsExecute(r TaskInstanceAPIGetTaskInstanceTryDetailsRequest) (*TaskInstanceHistoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2559,7 +2559,7 @@ func (a *TaskInstanceAPIService) GetTaskInstanceTryDetailsExecute(r ApiGetTaskIn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstancesRequest struct {
+type TaskInstanceAPIGetTaskInstancesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -2588,118 +2588,118 @@ type ApiGetTaskInstancesRequest struct {
 	orderBy *string
 }
 
-func (r ApiGetTaskInstancesRequest) TaskId(taskId string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) TaskId(taskId string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.taskId = &taskId
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) RunAfterGte(runAfterGte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) RunAfterGte(runAfterGte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.runAfterGte = &runAfterGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) RunAfterLte(runAfterLte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) RunAfterLte(runAfterLte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.runAfterLte = &runAfterLte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) LogicalDateGte(logicalDateGte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) LogicalDateGte(logicalDateGte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.logicalDateGte = &logicalDateGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) LogicalDateLte(logicalDateLte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) LogicalDateLte(logicalDateLte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.logicalDateLte = &logicalDateLte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) StartDateGte(startDateGte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) StartDateGte(startDateGte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.startDateGte = &startDateGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) StartDateLte(startDateLte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) StartDateLte(startDateLte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.startDateLte = &startDateLte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) EndDateGte(endDateGte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) EndDateGte(endDateGte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.endDateGte = &endDateGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) EndDateLte(endDateLte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) EndDateLte(endDateLte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.endDateLte = &endDateLte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) UpdatedAtGte(updatedAtGte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) UpdatedAtGte(updatedAtGte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.updatedAtGte = &updatedAtGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) UpdatedAtLte(updatedAtLte time.Time) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) UpdatedAtLte(updatedAtLte time.Time) TaskInstanceAPIGetTaskInstancesRequest {
 	r.updatedAtLte = &updatedAtLte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) DurationGte(durationGte float32) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) DurationGte(durationGte float32) TaskInstanceAPIGetTaskInstancesRequest {
 	r.durationGte = &durationGte
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) DurationLte(durationLte float32) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) DurationLte(durationLte float32) TaskInstanceAPIGetTaskInstancesRequest {
 	r.durationLte = &durationLte
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetTaskInstancesRequest) TaskDisplayNamePattern(taskDisplayNamePattern string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) TaskDisplayNamePattern(taskDisplayNamePattern string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.taskDisplayNamePattern = &taskDisplayNamePattern
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) State(state []string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) State(state []string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.state = &state
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Pool(pool []string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Pool(pool []string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.pool = &pool
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Queue(queue []string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Queue(queue []string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.queue = &queue
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Executor(executor []string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Executor(executor []string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.executor = &executor
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) VersionNumber(versionNumber []int32) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) VersionNumber(versionNumber []int32) TaskInstanceAPIGetTaskInstancesRequest {
 	r.versionNumber = &versionNumber
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Limit(limit int32) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Limit(limit int32) TaskInstanceAPIGetTaskInstancesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Offset(offset int32) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Offset(offset int32) TaskInstanceAPIGetTaskInstancesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) OrderBy(orderBy string) ApiGetTaskInstancesRequest {
+func (r TaskInstanceAPIGetTaskInstancesRequest) OrderBy(orderBy string) TaskInstanceAPIGetTaskInstancesRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstancesExecute(r)
 }
 
@@ -2714,10 +2714,10 @@ and DAG runs.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param dagRunId
- @return ApiGetTaskInstancesRequest
+ @return TaskInstanceAPIGetTaskInstancesRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstances(ctx context.Context, dagId string, dagRunId string) ApiGetTaskInstancesRequest {
-	return ApiGetTaskInstancesRequest{
+func (a *TaskInstanceAPIService) GetTaskInstances(ctx context.Context, dagId string, dagRunId string) TaskInstanceAPIGetTaskInstancesRequest {
+	return TaskInstanceAPIGetTaskInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -2727,7 +2727,7 @@ func (a *TaskInstanceAPIService) GetTaskInstances(ctx context.Context, dagId str
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) GetTaskInstancesExecute(r ApiGetTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstancesExecute(r TaskInstanceAPIGetTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2960,7 +2960,7 @@ func (a *TaskInstanceAPIService) GetTaskInstancesExecute(r ApiGetTaskInstancesRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTaskInstancesBatchRequest struct {
+type TaskInstanceAPIGetTaskInstancesBatchRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -2968,12 +2968,12 @@ type ApiGetTaskInstancesBatchRequest struct {
 	taskInstancesBatchBody *TaskInstancesBatchBody
 }
 
-func (r ApiGetTaskInstancesBatchRequest) TaskInstancesBatchBody(taskInstancesBatchBody TaskInstancesBatchBody) ApiGetTaskInstancesBatchRequest {
+func (r TaskInstanceAPIGetTaskInstancesBatchRequest) TaskInstancesBatchBody(taskInstancesBatchBody TaskInstancesBatchBody) TaskInstanceAPIGetTaskInstancesBatchRequest {
 	r.taskInstancesBatchBody = &taskInstancesBatchBody
 	return r
 }
 
-func (r ApiGetTaskInstancesBatchRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIGetTaskInstancesBatchRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTaskInstancesBatchExecute(r)
 }
 
@@ -2985,10 +2985,10 @@ Get list of task instances.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param dagRunId
- @return ApiGetTaskInstancesBatchRequest
+ @return TaskInstanceAPIGetTaskInstancesBatchRequest
 */
-func (a *TaskInstanceAPIService) GetTaskInstancesBatch(ctx context.Context, dagId string, dagRunId string) ApiGetTaskInstancesBatchRequest {
-	return ApiGetTaskInstancesBatchRequest{
+func (a *TaskInstanceAPIService) GetTaskInstancesBatch(ctx context.Context, dagId string, dagRunId string) TaskInstanceAPIGetTaskInstancesBatchRequest {
+	return TaskInstanceAPIGetTaskInstancesBatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -2998,7 +2998,7 @@ func (a *TaskInstanceAPIService) GetTaskInstancesBatch(ctx context.Context, dagI
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) GetTaskInstancesBatchExecute(r ApiGetTaskInstancesBatchRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) GetTaskInstancesBatchExecute(r TaskInstanceAPIGetTaskInstancesBatchRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3121,7 +3121,7 @@ func (a *TaskInstanceAPIService) GetTaskInstancesBatchExecute(r ApiGetTaskInstan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchTaskInstanceRequest struct {
+type TaskInstanceAPIPatchTaskInstanceRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -3132,22 +3132,22 @@ type ApiPatchTaskInstanceRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchTaskInstanceRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) ApiPatchTaskInstanceRequest {
+func (r TaskInstanceAPIPatchTaskInstanceRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) TaskInstanceAPIPatchTaskInstanceRequest {
 	r.patchTaskInstanceBody = &patchTaskInstanceBody
 	return r
 }
 
-func (r ApiPatchTaskInstanceRequest) MapIndex(mapIndex int32) ApiPatchTaskInstanceRequest {
+func (r TaskInstanceAPIPatchTaskInstanceRequest) MapIndex(mapIndex int32) TaskInstanceAPIPatchTaskInstanceRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiPatchTaskInstanceRequest) UpdateMask(updateMask []string) ApiPatchTaskInstanceRequest {
+func (r TaskInstanceAPIPatchTaskInstanceRequest) UpdateMask(updateMask []string) TaskInstanceAPIPatchTaskInstanceRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchTaskInstanceRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIPatchTaskInstanceRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.PatchTaskInstanceExecute(r)
 }
 
@@ -3160,10 +3160,10 @@ Update a task instance.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiPatchTaskInstanceRequest
+ @return TaskInstanceAPIPatchTaskInstanceRequest
 */
-func (a *TaskInstanceAPIService) PatchTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) ApiPatchTaskInstanceRequest {
-	return ApiPatchTaskInstanceRequest{
+func (a *TaskInstanceAPIService) PatchTaskInstance(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIPatchTaskInstanceRequest {
+	return TaskInstanceAPIPatchTaskInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -3174,7 +3174,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstance(ctx context.Context, dagId st
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) PatchTaskInstanceExecute(r ApiPatchTaskInstanceRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) PatchTaskInstanceExecute(r TaskInstanceAPIPatchTaskInstanceRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3334,7 +3334,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceExecute(r ApiPatchTaskInstance
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchTaskInstanceByMapIndexRequest struct {
+type TaskInstanceAPIPatchTaskInstanceByMapIndexRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -3345,17 +3345,17 @@ type ApiPatchTaskInstanceByMapIndexRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchTaskInstanceByMapIndexRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) ApiPatchTaskInstanceByMapIndexRequest {
+func (r TaskInstanceAPIPatchTaskInstanceByMapIndexRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) TaskInstanceAPIPatchTaskInstanceByMapIndexRequest {
 	r.patchTaskInstanceBody = &patchTaskInstanceBody
 	return r
 }
 
-func (r ApiPatchTaskInstanceByMapIndexRequest) UpdateMask(updateMask []string) ApiPatchTaskInstanceByMapIndexRequest {
+func (r TaskInstanceAPIPatchTaskInstanceByMapIndexRequest) UpdateMask(updateMask []string) TaskInstanceAPIPatchTaskInstanceByMapIndexRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchTaskInstanceByMapIndexRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIPatchTaskInstanceByMapIndexRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.PatchTaskInstanceByMapIndexExecute(r)
 }
 
@@ -3369,10 +3369,10 @@ Update a task instance.
  @param dagRunId
  @param taskId
  @param mapIndex
- @return ApiPatchTaskInstanceByMapIndexRequest
+ @return TaskInstanceAPIPatchTaskInstanceByMapIndexRequest
 */
-func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) ApiPatchTaskInstanceByMapIndexRequest {
-	return ApiPatchTaskInstanceByMapIndexRequest{
+func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) TaskInstanceAPIPatchTaskInstanceByMapIndexRequest {
+	return TaskInstanceAPIPatchTaskInstanceByMapIndexRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -3384,7 +3384,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndex(ctx context.Context
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndexExecute(r ApiPatchTaskInstanceByMapIndexRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndexExecute(r TaskInstanceAPIPatchTaskInstanceByMapIndexRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3542,7 +3542,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceByMapIndexExecute(r ApiPatchTa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchTaskInstanceDryRunRequest struct {
+type TaskInstanceAPIPatchTaskInstanceDryRunRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -3553,22 +3553,22 @@ type ApiPatchTaskInstanceDryRunRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchTaskInstanceDryRunRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) ApiPatchTaskInstanceDryRunRequest {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) TaskInstanceAPIPatchTaskInstanceDryRunRequest {
 	r.patchTaskInstanceBody = &patchTaskInstanceBody
 	return r
 }
 
-func (r ApiPatchTaskInstanceDryRunRequest) MapIndex(mapIndex int32) ApiPatchTaskInstanceDryRunRequest {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunRequest) MapIndex(mapIndex int32) TaskInstanceAPIPatchTaskInstanceDryRunRequest {
 	r.mapIndex = &mapIndex
 	return r
 }
 
-func (r ApiPatchTaskInstanceDryRunRequest) UpdateMask(updateMask []string) ApiPatchTaskInstanceDryRunRequest {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunRequest) UpdateMask(updateMask []string) TaskInstanceAPIPatchTaskInstanceDryRunRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchTaskInstanceDryRunRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.PatchTaskInstanceDryRunExecute(r)
 }
 
@@ -3581,10 +3581,10 @@ Update a task instance dry_run mode.
  @param dagId
  @param dagRunId
  @param taskId
- @return ApiPatchTaskInstanceDryRunRequest
+ @return TaskInstanceAPIPatchTaskInstanceDryRunRequest
 */
-func (a *TaskInstanceAPIService) PatchTaskInstanceDryRun(ctx context.Context, dagId string, dagRunId string, taskId string) ApiPatchTaskInstanceDryRunRequest {
-	return ApiPatchTaskInstanceDryRunRequest{
+func (a *TaskInstanceAPIService) PatchTaskInstanceDryRun(ctx context.Context, dagId string, dagRunId string, taskId string) TaskInstanceAPIPatchTaskInstanceDryRunRequest {
+	return TaskInstanceAPIPatchTaskInstanceDryRunRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -3595,7 +3595,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceDryRun(ctx context.Context, da
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunExecute(r ApiPatchTaskInstanceDryRunRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunExecute(r TaskInstanceAPIPatchTaskInstanceDryRunRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3744,7 +3744,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunExecute(r ApiPatchTaskIn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchTaskInstanceDryRunByMapIndexRequest struct {
+type TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
@@ -3755,17 +3755,17 @@ type ApiPatchTaskInstanceDryRunByMapIndexRequest struct {
 	updateMask *[]string
 }
 
-func (r ApiPatchTaskInstanceDryRunByMapIndexRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) ApiPatchTaskInstanceDryRunByMapIndexRequest {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest) PatchTaskInstanceBody(patchTaskInstanceBody PatchTaskInstanceBody) TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest {
 	r.patchTaskInstanceBody = &patchTaskInstanceBody
 	return r
 }
 
-func (r ApiPatchTaskInstanceDryRunByMapIndexRequest) UpdateMask(updateMask []string) ApiPatchTaskInstanceDryRunByMapIndexRequest {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest) UpdateMask(updateMask []string) TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest {
 	r.updateMask = &updateMask
 	return r
 }
 
-func (r ApiPatchTaskInstanceDryRunByMapIndexRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.PatchTaskInstanceDryRunByMapIndexExecute(r)
 }
 
@@ -3779,10 +3779,10 @@ Update a task instance dry_run mode.
  @param dagRunId
  @param taskId
  @param mapIndex
- @return ApiPatchTaskInstanceDryRunByMapIndexRequest
+ @return TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest
 */
-func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) ApiPatchTaskInstanceDryRunByMapIndexRequest {
-	return ApiPatchTaskInstanceDryRunByMapIndexRequest{
+func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndex(ctx context.Context, dagId string, dagRunId string, taskId string, mapIndex int32) TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest {
+	return TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -3794,7 +3794,7 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndex(ctx context.C
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndexExecute(r ApiPatchTaskInstanceDryRunByMapIndexRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndexExecute(r TaskInstanceAPIPatchTaskInstanceDryRunByMapIndexRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3941,19 +3941,19 @@ func (a *TaskInstanceAPIService) PatchTaskInstanceDryRunByMapIndexExecute(r ApiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostClearTaskInstancesRequest struct {
+type TaskInstanceAPIPostClearTaskInstancesRequest struct {
 	ctx context.Context
 	ApiService *TaskInstanceAPIService
 	dagId string
 	clearTaskInstancesBody *ClearTaskInstancesBody
 }
 
-func (r ApiPostClearTaskInstancesRequest) ClearTaskInstancesBody(clearTaskInstancesBody ClearTaskInstancesBody) ApiPostClearTaskInstancesRequest {
+func (r TaskInstanceAPIPostClearTaskInstancesRequest) ClearTaskInstancesBody(clearTaskInstancesBody ClearTaskInstancesBody) TaskInstanceAPIPostClearTaskInstancesRequest {
 	r.clearTaskInstancesBody = &clearTaskInstancesBody
 	return r
 }
 
-func (r ApiPostClearTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (r TaskInstanceAPIPostClearTaskInstancesRequest) Execute() (*TaskInstanceCollectionResponse, *http.Response, error) {
 	return r.ApiService.PostClearTaskInstancesExecute(r)
 }
 
@@ -3964,10 +3964,10 @@ Clear task instances.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
- @return ApiPostClearTaskInstancesRequest
+ @return TaskInstanceAPIPostClearTaskInstancesRequest
 */
-func (a *TaskInstanceAPIService) PostClearTaskInstances(ctx context.Context, dagId string) ApiPostClearTaskInstancesRequest {
-	return ApiPostClearTaskInstancesRequest{
+func (a *TaskInstanceAPIService) PostClearTaskInstances(ctx context.Context, dagId string) TaskInstanceAPIPostClearTaskInstancesRequest {
+	return TaskInstanceAPIPostClearTaskInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -3976,7 +3976,7 @@ func (a *TaskInstanceAPIService) PostClearTaskInstances(ctx context.Context, dag
 
 // Execute executes the request
 //  @return TaskInstanceCollectionResponse
-func (a *TaskInstanceAPIService) PostClearTaskInstancesExecute(r ApiPostClearTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
+func (a *TaskInstanceAPIService) PostClearTaskInstancesExecute(r TaskInstanceAPIPostClearTaskInstancesRequest) (*TaskInstanceCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

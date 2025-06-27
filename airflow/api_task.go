@@ -23,14 +23,14 @@ import (
 // TaskAPIService TaskAPI service
 type TaskAPIService service
 
-type ApiGetTaskRequest struct {
+type TaskAPIGetTaskRequest struct {
 	ctx context.Context
 	ApiService *TaskAPIService
 	dagId string
 	taskId interface{}
 }
 
-func (r ApiGetTaskRequest) Execute() (*TaskResponse, *http.Response, error) {
+func (r TaskAPIGetTaskRequest) Execute() (*TaskResponse, *http.Response, error) {
 	return r.ApiService.GetTaskExecute(r)
 }
 
@@ -42,10 +42,10 @@ Get simplified representation of a task.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param taskId
- @return ApiGetTaskRequest
+ @return TaskAPIGetTaskRequest
 */
-func (a *TaskAPIService) GetTask(ctx context.Context, dagId string, taskId interface{}) ApiGetTaskRequest {
-	return ApiGetTaskRequest{
+func (a *TaskAPIService) GetTask(ctx context.Context, dagId string, taskId interface{}) TaskAPIGetTaskRequest {
+	return TaskAPIGetTaskRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -55,7 +55,7 @@ func (a *TaskAPIService) GetTask(ctx context.Context, dagId string, taskId inter
 
 // Execute executes the request
 //  @return TaskResponse
-func (a *TaskAPIService) GetTaskExecute(r ApiGetTaskRequest) (*TaskResponse, *http.Response, error) {
+func (a *TaskAPIService) GetTaskExecute(r TaskAPIGetTaskRequest) (*TaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -184,19 +184,19 @@ func (a *TaskAPIService) GetTaskExecute(r ApiGetTaskRequest) (*TaskResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTasksRequest struct {
+type TaskAPIGetTasksRequest struct {
 	ctx context.Context
 	ApiService *TaskAPIService
 	dagId string
 	orderBy *string
 }
 
-func (r ApiGetTasksRequest) OrderBy(orderBy string) ApiGetTasksRequest {
+func (r TaskAPIGetTasksRequest) OrderBy(orderBy string) TaskAPIGetTasksRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetTasksRequest) Execute() (*TaskCollectionResponse, *http.Response, error) {
+func (r TaskAPIGetTasksRequest) Execute() (*TaskCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetTasksExecute(r)
 }
 
@@ -207,10 +207,10 @@ Get tasks for DAG.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
- @return ApiGetTasksRequest
+ @return TaskAPIGetTasksRequest
 */
-func (a *TaskAPIService) GetTasks(ctx context.Context, dagId string) ApiGetTasksRequest {
-	return ApiGetTasksRequest{
+func (a *TaskAPIService) GetTasks(ctx context.Context, dagId string) TaskAPIGetTasksRequest {
+	return TaskAPIGetTasksRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -219,7 +219,7 @@ func (a *TaskAPIService) GetTasks(ctx context.Context, dagId string) ApiGetTasks
 
 // Execute executes the request
 //  @return TaskCollectionResponse
-func (a *TaskAPIService) GetTasksExecute(r ApiGetTasksRequest) (*TaskCollectionResponse, *http.Response, error) {
+func (a *TaskAPIService) GetTasksExecute(r TaskAPIGetTasksRequest) (*TaskCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

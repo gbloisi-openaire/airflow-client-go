@@ -22,12 +22,12 @@ import (
 // VersionAPIService VersionAPI service
 type VersionAPIService service
 
-type ApiGetVersionRequest struct {
+type VersionAPIGetVersionRequest struct {
 	ctx context.Context
 	ApiService *VersionAPIService
 }
 
-func (r ApiGetVersionRequest) Execute() (*VersionInfo, *http.Response, error) {
+func (r VersionAPIGetVersionRequest) Execute() (*VersionInfo, *http.Response, error) {
 	return r.ApiService.GetVersionExecute(r)
 }
 
@@ -37,10 +37,10 @@ GetVersion Get Version
 Get version information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetVersionRequest
+ @return VersionAPIGetVersionRequest
 */
-func (a *VersionAPIService) GetVersion(ctx context.Context) ApiGetVersionRequest {
-	return ApiGetVersionRequest{
+func (a *VersionAPIService) GetVersion(ctx context.Context) VersionAPIGetVersionRequest {
+	return VersionAPIGetVersionRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -48,7 +48,7 @@ func (a *VersionAPIService) GetVersion(ctx context.Context) ApiGetVersionRequest
 
 // Execute executes the request
 //  @return VersionInfo
-func (a *VersionAPIService) GetVersionExecute(r ApiGetVersionRequest) (*VersionInfo, *http.Response, error) {
+func (a *VersionAPIService) GetVersionExecute(r VersionAPIGetVersionRequest) (*VersionInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

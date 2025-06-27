@@ -22,18 +22,18 @@ import (
 // SimpleAuthManagerLoginAPIService SimpleAuthManagerLoginAPI service
 type SimpleAuthManagerLoginAPIService service
 
-type ApiCreateTokenRequest struct {
+type SimpleAuthManagerLoginAPICreateTokenRequest struct {
 	ctx context.Context
 	ApiService *SimpleAuthManagerLoginAPIService
 	loginBody *LoginBody
 }
 
-func (r ApiCreateTokenRequest) LoginBody(loginBody LoginBody) ApiCreateTokenRequest {
+func (r SimpleAuthManagerLoginAPICreateTokenRequest) LoginBody(loginBody LoginBody) SimpleAuthManagerLoginAPICreateTokenRequest {
 	r.loginBody = &loginBody
 	return r
 }
 
-func (r ApiCreateTokenRequest) Execute() (*LoginResponse, *http.Response, error) {
+func (r SimpleAuthManagerLoginAPICreateTokenRequest) Execute() (*LoginResponse, *http.Response, error) {
 	return r.ApiService.CreateTokenExecute(r)
 }
 
@@ -43,10 +43,10 @@ CreateToken Create Token
 Authenticate the user.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateTokenRequest
+ @return SimpleAuthManagerLoginAPICreateTokenRequest
 */
-func (a *SimpleAuthManagerLoginAPIService) CreateToken(ctx context.Context) ApiCreateTokenRequest {
-	return ApiCreateTokenRequest{
+func (a *SimpleAuthManagerLoginAPIService) CreateToken(ctx context.Context) SimpleAuthManagerLoginAPICreateTokenRequest {
+	return SimpleAuthManagerLoginAPICreateTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -54,7 +54,7 @@ func (a *SimpleAuthManagerLoginAPIService) CreateToken(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return LoginResponse
-func (a *SimpleAuthManagerLoginAPIService) CreateTokenExecute(r ApiCreateTokenRequest) (*LoginResponse, *http.Response, error) {
+func (a *SimpleAuthManagerLoginAPIService) CreateTokenExecute(r SimpleAuthManagerLoginAPICreateTokenRequest) (*LoginResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -164,12 +164,12 @@ func (a *SimpleAuthManagerLoginAPIService) CreateTokenExecute(r ApiCreateTokenRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateTokenAllAdminsRequest struct {
+type SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest struct {
 	ctx context.Context
 	ApiService *SimpleAuthManagerLoginAPIService
 }
 
-func (r ApiCreateTokenAllAdminsRequest) Execute() (*LoginResponse, *http.Response, error) {
+func (r SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest) Execute() (*LoginResponse, *http.Response, error) {
 	return r.ApiService.CreateTokenAllAdminsExecute(r)
 }
 
@@ -179,10 +179,10 @@ CreateTokenAllAdmins Create Token All Admins
 Create a token with no credentials only if ``simple_auth_manager_all_admins`` is True.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateTokenAllAdminsRequest
+ @return SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest
 */
-func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdmins(ctx context.Context) ApiCreateTokenAllAdminsRequest {
-	return ApiCreateTokenAllAdminsRequest{
+func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdmins(ctx context.Context) SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest {
+	return SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -190,7 +190,7 @@ func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdmins(ctx context.Cont
 
 // Execute executes the request
 //  @return LoginResponse
-func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdminsExecute(r ApiCreateTokenAllAdminsRequest) (*LoginResponse, *http.Response, error) {
+func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdminsExecute(r SimpleAuthManagerLoginAPICreateTokenAllAdminsRequest) (*LoginResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -273,18 +273,18 @@ func (a *SimpleAuthManagerLoginAPIService) CreateTokenAllAdminsExecute(r ApiCrea
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateTokenCliRequest struct {
+type SimpleAuthManagerLoginAPICreateTokenCliRequest struct {
 	ctx context.Context
 	ApiService *SimpleAuthManagerLoginAPIService
 	loginBody *LoginBody
 }
 
-func (r ApiCreateTokenCliRequest) LoginBody(loginBody LoginBody) ApiCreateTokenCliRequest {
+func (r SimpleAuthManagerLoginAPICreateTokenCliRequest) LoginBody(loginBody LoginBody) SimpleAuthManagerLoginAPICreateTokenCliRequest {
 	r.loginBody = &loginBody
 	return r
 }
 
-func (r ApiCreateTokenCliRequest) Execute() (*LoginResponse, *http.Response, error) {
+func (r SimpleAuthManagerLoginAPICreateTokenCliRequest) Execute() (*LoginResponse, *http.Response, error) {
 	return r.ApiService.CreateTokenCliExecute(r)
 }
 
@@ -294,10 +294,10 @@ CreateTokenCli Create Token Cli
 Authenticate the user for the CLI.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateTokenCliRequest
+ @return SimpleAuthManagerLoginAPICreateTokenCliRequest
 */
-func (a *SimpleAuthManagerLoginAPIService) CreateTokenCli(ctx context.Context) ApiCreateTokenCliRequest {
-	return ApiCreateTokenCliRequest{
+func (a *SimpleAuthManagerLoginAPIService) CreateTokenCli(ctx context.Context) SimpleAuthManagerLoginAPICreateTokenCliRequest {
+	return SimpleAuthManagerLoginAPICreateTokenCliRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -305,7 +305,7 @@ func (a *SimpleAuthManagerLoginAPIService) CreateTokenCli(ctx context.Context) A
 
 // Execute executes the request
 //  @return LoginResponse
-func (a *SimpleAuthManagerLoginAPIService) CreateTokenCliExecute(r ApiCreateTokenCliRequest) (*LoginResponse, *http.Response, error) {
+func (a *SimpleAuthManagerLoginAPIService) CreateTokenCliExecute(r SimpleAuthManagerLoginAPICreateTokenCliRequest) (*LoginResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -415,12 +415,12 @@ func (a *SimpleAuthManagerLoginAPIService) CreateTokenCliExecute(r ApiCreateToke
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiLoginAllAdminsRequest struct {
+type SimpleAuthManagerLoginAPILoginAllAdminsRequest struct {
 	ctx context.Context
 	ApiService *SimpleAuthManagerLoginAPIService
 }
 
-func (r ApiLoginAllAdminsRequest) Execute() (*http.Response, error) {
+func (r SimpleAuthManagerLoginAPILoginAllAdminsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.LoginAllAdminsExecute(r)
 }
 
@@ -430,17 +430,17 @@ LoginAllAdmins Login All Admins
 Login the user with no credentials.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLoginAllAdminsRequest
+ @return SimpleAuthManagerLoginAPILoginAllAdminsRequest
 */
-func (a *SimpleAuthManagerLoginAPIService) LoginAllAdmins(ctx context.Context) ApiLoginAllAdminsRequest {
-	return ApiLoginAllAdminsRequest{
+func (a *SimpleAuthManagerLoginAPIService) LoginAllAdmins(ctx context.Context) SimpleAuthManagerLoginAPILoginAllAdminsRequest {
+	return SimpleAuthManagerLoginAPILoginAllAdminsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SimpleAuthManagerLoginAPIService) LoginAllAdminsExecute(r ApiLoginAllAdminsRequest) (*http.Response, error) {
+func (a *SimpleAuthManagerLoginAPIService) LoginAllAdminsExecute(r SimpleAuthManagerLoginAPILoginAllAdminsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

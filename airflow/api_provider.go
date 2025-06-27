@@ -22,24 +22,24 @@ import (
 // ProviderAPIService ProviderAPI service
 type ProviderAPIService service
 
-type ApiGetProvidersRequest struct {
+type ProviderAPIGetProvidersRequest struct {
 	ctx context.Context
 	ApiService *ProviderAPIService
 	limit *int32
 	offset *int32
 }
 
-func (r ApiGetProvidersRequest) Limit(limit int32) ApiGetProvidersRequest {
+func (r ProviderAPIGetProvidersRequest) Limit(limit int32) ProviderAPIGetProvidersRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetProvidersRequest) Offset(offset int32) ApiGetProvidersRequest {
+func (r ProviderAPIGetProvidersRequest) Offset(offset int32) ProviderAPIGetProvidersRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetProvidersRequest) Execute() (*ProviderCollectionResponse, *http.Response, error) {
+func (r ProviderAPIGetProvidersRequest) Execute() (*ProviderCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetProvidersExecute(r)
 }
 
@@ -49,10 +49,10 @@ GetProviders Get Providers
 Get providers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetProvidersRequest
+ @return ProviderAPIGetProvidersRequest
 */
-func (a *ProviderAPIService) GetProviders(ctx context.Context) ApiGetProvidersRequest {
-	return ApiGetProvidersRequest{
+func (a *ProviderAPIService) GetProviders(ctx context.Context) ProviderAPIGetProvidersRequest {
+	return ProviderAPIGetProvidersRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -60,7 +60,7 @@ func (a *ProviderAPIService) GetProviders(ctx context.Context) ApiGetProvidersRe
 
 // Execute executes the request
 //  @return ProviderCollectionResponse
-func (a *ProviderAPIService) GetProvidersExecute(r ApiGetProvidersRequest) (*ProviderCollectionResponse, *http.Response, error) {
+func (a *ProviderAPIService) GetProvidersExecute(r ProviderAPIGetProvidersRequest) (*ProviderCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -23,18 +23,18 @@ import (
 // DagStatsAPIService DagStatsAPI service
 type DagStatsAPIService service
 
-type ApiGetDagStatsRequest struct {
+type DagStatsAPIGetDagStatsRequest struct {
 	ctx context.Context
 	ApiService *DagStatsAPIService
 	dagIds *[]string
 }
 
-func (r ApiGetDagStatsRequest) DagIds(dagIds []string) ApiGetDagStatsRequest {
+func (r DagStatsAPIGetDagStatsRequest) DagIds(dagIds []string) DagStatsAPIGetDagStatsRequest {
 	r.dagIds = &dagIds
 	return r
 }
 
-func (r ApiGetDagStatsRequest) Execute() (*DagStatsCollectionResponse, *http.Response, error) {
+func (r DagStatsAPIGetDagStatsRequest) Execute() (*DagStatsCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetDagStatsExecute(r)
 }
 
@@ -44,10 +44,10 @@ GetDagStats Get Dag Stats
 Get Dag statistics.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDagStatsRequest
+ @return DagStatsAPIGetDagStatsRequest
 */
-func (a *DagStatsAPIService) GetDagStats(ctx context.Context) ApiGetDagStatsRequest {
-	return ApiGetDagStatsRequest{
+func (a *DagStatsAPIService) GetDagStats(ctx context.Context) DagStatsAPIGetDagStatsRequest {
+	return DagStatsAPIGetDagStatsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -55,7 +55,7 @@ func (a *DagStatsAPIService) GetDagStats(ctx context.Context) ApiGetDagStatsRequ
 
 // Execute executes the request
 //  @return DagStatsCollectionResponse
-func (a *DagStatsAPIService) GetDagStatsExecute(r ApiGetDagStatsRequest) (*DagStatsCollectionResponse, *http.Response, error) {
+func (a *DagStatsAPIService) GetDagStatsExecute(r DagStatsAPIGetDagStatsRequest) (*DagStatsCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

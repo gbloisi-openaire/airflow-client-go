@@ -23,13 +23,13 @@ import (
 // ImportErrorAPIService ImportErrorAPI service
 type ImportErrorAPIService service
 
-type ApiGetImportErrorRequest struct {
+type ImportErrorAPIGetImportErrorRequest struct {
 	ctx context.Context
 	ApiService *ImportErrorAPIService
 	importErrorId int32
 }
 
-func (r ApiGetImportErrorRequest) Execute() (*ImportErrorResponse, *http.Response, error) {
+func (r ImportErrorAPIGetImportErrorRequest) Execute() (*ImportErrorResponse, *http.Response, error) {
 	return r.ApiService.GetImportErrorExecute(r)
 }
 
@@ -40,10 +40,10 @@ Get an import error.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param importErrorId
- @return ApiGetImportErrorRequest
+ @return ImportErrorAPIGetImportErrorRequest
 */
-func (a *ImportErrorAPIService) GetImportError(ctx context.Context, importErrorId int32) ApiGetImportErrorRequest {
-	return ApiGetImportErrorRequest{
+func (a *ImportErrorAPIService) GetImportError(ctx context.Context, importErrorId int32) ImportErrorAPIGetImportErrorRequest {
+	return ImportErrorAPIGetImportErrorRequest{
 		ApiService: a,
 		ctx: ctx,
 		importErrorId: importErrorId,
@@ -52,7 +52,7 @@ func (a *ImportErrorAPIService) GetImportError(ctx context.Context, importErrorI
 
 // Execute executes the request
 //  @return ImportErrorResponse
-func (a *ImportErrorAPIService) GetImportErrorExecute(r ApiGetImportErrorRequest) (*ImportErrorResponse, *http.Response, error) {
+func (a *ImportErrorAPIService) GetImportErrorExecute(r ImportErrorAPIGetImportErrorRequest) (*ImportErrorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -169,7 +169,7 @@ func (a *ImportErrorAPIService) GetImportErrorExecute(r ApiGetImportErrorRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetImportErrorsRequest struct {
+type ImportErrorAPIGetImportErrorsRequest struct {
 	ctx context.Context
 	ApiService *ImportErrorAPIService
 	limit *int32
@@ -177,22 +177,22 @@ type ApiGetImportErrorsRequest struct {
 	orderBy *string
 }
 
-func (r ApiGetImportErrorsRequest) Limit(limit int32) ApiGetImportErrorsRequest {
+func (r ImportErrorAPIGetImportErrorsRequest) Limit(limit int32) ImportErrorAPIGetImportErrorsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetImportErrorsRequest) Offset(offset int32) ApiGetImportErrorsRequest {
+func (r ImportErrorAPIGetImportErrorsRequest) Offset(offset int32) ImportErrorAPIGetImportErrorsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetImportErrorsRequest) OrderBy(orderBy string) ApiGetImportErrorsRequest {
+func (r ImportErrorAPIGetImportErrorsRequest) OrderBy(orderBy string) ImportErrorAPIGetImportErrorsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetImportErrorsRequest) Execute() (*ImportErrorCollectionResponse, *http.Response, error) {
+func (r ImportErrorAPIGetImportErrorsRequest) Execute() (*ImportErrorCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetImportErrorsExecute(r)
 }
 
@@ -202,10 +202,10 @@ GetImportErrors Get Import Errors
 Get all import errors.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetImportErrorsRequest
+ @return ImportErrorAPIGetImportErrorsRequest
 */
-func (a *ImportErrorAPIService) GetImportErrors(ctx context.Context) ApiGetImportErrorsRequest {
-	return ApiGetImportErrorsRequest{
+func (a *ImportErrorAPIService) GetImportErrors(ctx context.Context) ImportErrorAPIGetImportErrorsRequest {
+	return ImportErrorAPIGetImportErrorsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -213,7 +213,7 @@ func (a *ImportErrorAPIService) GetImportErrors(ctx context.Context) ApiGetImpor
 
 // Execute executes the request
 //  @return ImportErrorCollectionResponse
-func (a *ImportErrorAPIService) GetImportErrorsExecute(r ApiGetImportErrorsRequest) (*ImportErrorCollectionResponse, *http.Response, error) {
+func (a *ImportErrorAPIService) GetImportErrorsExecute(r ImportErrorAPIGetImportErrorsRequest) (*ImportErrorCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

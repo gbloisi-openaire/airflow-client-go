@@ -20,10 +20,10 @@ type DagRunState string
 
 // List of DagRunState
 const (
-	QUEUED DagRunState = "queued"
-	RUNNING DagRunState = "running"
-	SUCCESS DagRunState = "success"
-	FAILED DagRunState = "failed"
+	DAGRUNSTATE_QUEUED DagRunState = "queued"
+	DAGRUNSTATE_RUNNING DagRunState = "running"
+	DAGRUNSTATE_SUCCESS DagRunState = "success"
+	DAGRUNSTATE_FAILED DagRunState = "failed"
 )
 
 // All allowed values of DagRunState enum

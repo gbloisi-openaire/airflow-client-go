@@ -20,10 +20,10 @@ type DagRunType string
 
 // List of DagRunType
 const (
-	BACKFILL DagRunType = "backfill"
-	SCHEDULED DagRunType = "scheduled"
-	MANUAL DagRunType = "manual"
-	ASSET_TRIGGERED DagRunType = "asset_triggered"
+	DAGRUNTYPE_BACKFILL DagRunType = "backfill"
+	DAGRUNTYPE_SCHEDULED DagRunType = "scheduled"
+	DAGRUNTYPE_MANUAL DagRunType = "manual"
+	DAGRUNTYPE_ASSET_TRIGGERED DagRunType = "asset_triggered"
 )
 
 // All allowed values of DagRunType enum

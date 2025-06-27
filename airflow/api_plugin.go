@@ -22,24 +22,24 @@ import (
 // PluginAPIService PluginAPI service
 type PluginAPIService service
 
-type ApiGetPluginsRequest struct {
+type PluginAPIGetPluginsRequest struct {
 	ctx context.Context
 	ApiService *PluginAPIService
 	limit *int32
 	offset *int32
 }
 
-func (r ApiGetPluginsRequest) Limit(limit int32) ApiGetPluginsRequest {
+func (r PluginAPIGetPluginsRequest) Limit(limit int32) PluginAPIGetPluginsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetPluginsRequest) Offset(offset int32) ApiGetPluginsRequest {
+func (r PluginAPIGetPluginsRequest) Offset(offset int32) PluginAPIGetPluginsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetPluginsRequest) Execute() (*PluginCollectionResponse, *http.Response, error) {
+func (r PluginAPIGetPluginsRequest) Execute() (*PluginCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetPluginsExecute(r)
 }
 
@@ -47,10 +47,10 @@ func (r ApiGetPluginsRequest) Execute() (*PluginCollectionResponse, *http.Respon
 GetPlugins Get Plugins
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetPluginsRequest
+ @return PluginAPIGetPluginsRequest
 */
-func (a *PluginAPIService) GetPlugins(ctx context.Context) ApiGetPluginsRequest {
-	return ApiGetPluginsRequest{
+func (a *PluginAPIService) GetPlugins(ctx context.Context) PluginAPIGetPluginsRequest {
+	return PluginAPIGetPluginsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -58,7 +58,7 @@ func (a *PluginAPIService) GetPlugins(ctx context.Context) ApiGetPluginsRequest 
 
 // Execute executes the request
 //  @return PluginCollectionResponse
-func (a *PluginAPIService) GetPluginsExecute(r ApiGetPluginsRequest) (*PluginCollectionResponse, *http.Response, error) {
+func (a *PluginAPIService) GetPluginsExecute(r PluginAPIGetPluginsRequest) (*PluginCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -175,12 +175,12 @@ func (a *PluginAPIService) GetPluginsExecute(r ApiGetPluginsRequest) (*PluginCol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiImportErrorsRequest struct {
+type PluginAPIImportErrorsRequest struct {
 	ctx context.Context
 	ApiService *PluginAPIService
 }
 
-func (r ApiImportErrorsRequest) Execute() (*PluginImportErrorCollectionResponse, *http.Response, error) {
+func (r PluginAPIImportErrorsRequest) Execute() (*PluginImportErrorCollectionResponse, *http.Response, error) {
 	return r.ApiService.ImportErrorsExecute(r)
 }
 
@@ -188,10 +188,10 @@ func (r ApiImportErrorsRequest) Execute() (*PluginImportErrorCollectionResponse,
 ImportErrors Import Errors
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportErrorsRequest
+ @return PluginAPIImportErrorsRequest
 */
-func (a *PluginAPIService) ImportErrors(ctx context.Context) ApiImportErrorsRequest {
-	return ApiImportErrorsRequest{
+func (a *PluginAPIService) ImportErrors(ctx context.Context) PluginAPIImportErrorsRequest {
+	return PluginAPIImportErrorsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -199,7 +199,7 @@ func (a *PluginAPIService) ImportErrors(ctx context.Context) ApiImportErrorsRequ
 
 // Execute executes the request
 //  @return PluginImportErrorCollectionResponse
-func (a *PluginAPIService) ImportErrorsExecute(r ApiImportErrorsRequest) (*PluginImportErrorCollectionResponse, *http.Response, error) {
+func (a *PluginAPIService) ImportErrorsExecute(r PluginAPIImportErrorsRequest) (*PluginImportErrorCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

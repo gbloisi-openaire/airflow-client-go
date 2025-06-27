@@ -20,8 +20,8 @@ type BulkActionNotOnExistence string
 
 // List of BulkActionNotOnExistence
 const (
-	FAIL BulkActionNotOnExistence = "fail"
-	SKIP BulkActionNotOnExistence = "skip"
+	BULKACTIONNOTONEXISTENCE_FAIL BulkActionNotOnExistence = "fail"
+	BULKACTIONNOTONEXISTENCE_SKIP BulkActionNotOnExistence = "skip"
 )
 
 // All allowed values of BulkActionNotOnExistence enum

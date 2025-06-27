@@ -25,18 +25,18 @@ import (
 // AssetAPIService AssetAPI service
 type AssetAPIService service
 
-type ApiCreateAssetEventRequest struct {
+type AssetAPICreateAssetEventRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	createAssetEventsBody *CreateAssetEventsBody
 }
 
-func (r ApiCreateAssetEventRequest) CreateAssetEventsBody(createAssetEventsBody CreateAssetEventsBody) ApiCreateAssetEventRequest {
+func (r AssetAPICreateAssetEventRequest) CreateAssetEventsBody(createAssetEventsBody CreateAssetEventsBody) AssetAPICreateAssetEventRequest {
 	r.createAssetEventsBody = &createAssetEventsBody
 	return r
 }
 
-func (r ApiCreateAssetEventRequest) Execute() (*AssetEventResponse, *http.Response, error) {
+func (r AssetAPICreateAssetEventRequest) Execute() (*AssetEventResponse, *http.Response, error) {
 	return r.ApiService.CreateAssetEventExecute(r)
 }
 
@@ -46,10 +46,10 @@ CreateAssetEvent Create Asset Event
 Create asset events.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateAssetEventRequest
+ @return AssetAPICreateAssetEventRequest
 */
-func (a *AssetAPIService) CreateAssetEvent(ctx context.Context) ApiCreateAssetEventRequest {
-	return ApiCreateAssetEventRequest{
+func (a *AssetAPIService) CreateAssetEvent(ctx context.Context) AssetAPICreateAssetEventRequest {
+	return AssetAPICreateAssetEventRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *AssetAPIService) CreateAssetEvent(ctx context.Context) ApiCreateAssetEv
 
 // Execute executes the request
 //  @return AssetEventResponse
-func (a *AssetAPIService) CreateAssetEventExecute(r ApiCreateAssetEventRequest) (*AssetEventResponse, *http.Response, error) {
+func (a *AssetAPIService) CreateAssetEventExecute(r AssetAPICreateAssetEventRequest) (*AssetEventResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -178,19 +178,19 @@ func (a *AssetAPIService) CreateAssetEventExecute(r ApiCreateAssetEventRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteAssetQueuedEventsRequest struct {
+type AssetAPIDeleteAssetQueuedEventsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	assetId int32
 	before *string
 }
 
-func (r ApiDeleteAssetQueuedEventsRequest) Before(before string) ApiDeleteAssetQueuedEventsRequest {
+func (r AssetAPIDeleteAssetQueuedEventsRequest) Before(before string) AssetAPIDeleteAssetQueuedEventsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiDeleteAssetQueuedEventsRequest) Execute() (*http.Response, error) {
+func (r AssetAPIDeleteAssetQueuedEventsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteAssetQueuedEventsExecute(r)
 }
 
@@ -201,10 +201,10 @@ Delete queued asset events for an asset.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetId
- @return ApiDeleteAssetQueuedEventsRequest
+ @return AssetAPIDeleteAssetQueuedEventsRequest
 */
-func (a *AssetAPIService) DeleteAssetQueuedEvents(ctx context.Context, assetId int32) ApiDeleteAssetQueuedEventsRequest {
-	return ApiDeleteAssetQueuedEventsRequest{
+func (a *AssetAPIService) DeleteAssetQueuedEvents(ctx context.Context, assetId int32) AssetAPIDeleteAssetQueuedEventsRequest {
+	return AssetAPIDeleteAssetQueuedEventsRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetId: assetId,
@@ -212,7 +212,7 @@ func (a *AssetAPIService) DeleteAssetQueuedEvents(ctx context.Context, assetId i
 }
 
 // Execute executes the request
-func (a *AssetAPIService) DeleteAssetQueuedEventsExecute(r ApiDeleteAssetQueuedEventsRequest) (*http.Response, error) {
+func (a *AssetAPIService) DeleteAssetQueuedEventsExecute(r AssetAPIDeleteAssetQueuedEventsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -322,7 +322,7 @@ func (a *AssetAPIService) DeleteAssetQueuedEventsExecute(r ApiDeleteAssetQueuedE
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteDagAssetQueuedEventRequest struct {
+type AssetAPIDeleteDagAssetQueuedEventRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	dagId string
@@ -330,12 +330,12 @@ type ApiDeleteDagAssetQueuedEventRequest struct {
 	before *string
 }
 
-func (r ApiDeleteDagAssetQueuedEventRequest) Before(before string) ApiDeleteDagAssetQueuedEventRequest {
+func (r AssetAPIDeleteDagAssetQueuedEventRequest) Before(before string) AssetAPIDeleteDagAssetQueuedEventRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiDeleteDagAssetQueuedEventRequest) Execute() (*http.Response, error) {
+func (r AssetAPIDeleteDagAssetQueuedEventRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDagAssetQueuedEventExecute(r)
 }
 
@@ -347,10 +347,10 @@ Delete a queued asset event for a DAG.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param assetId
- @return ApiDeleteDagAssetQueuedEventRequest
+ @return AssetAPIDeleteDagAssetQueuedEventRequest
 */
-func (a *AssetAPIService) DeleteDagAssetQueuedEvent(ctx context.Context, dagId string, assetId int32) ApiDeleteDagAssetQueuedEventRequest {
-	return ApiDeleteDagAssetQueuedEventRequest{
+func (a *AssetAPIService) DeleteDagAssetQueuedEvent(ctx context.Context, dagId string, assetId int32) AssetAPIDeleteDagAssetQueuedEventRequest {
+	return AssetAPIDeleteDagAssetQueuedEventRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -359,7 +359,7 @@ func (a *AssetAPIService) DeleteDagAssetQueuedEvent(ctx context.Context, dagId s
 }
 
 // Execute executes the request
-func (a *AssetAPIService) DeleteDagAssetQueuedEventExecute(r ApiDeleteDagAssetQueuedEventRequest) (*http.Response, error) {
+func (a *AssetAPIService) DeleteDagAssetQueuedEventExecute(r AssetAPIDeleteDagAssetQueuedEventRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -481,19 +481,19 @@ func (a *AssetAPIService) DeleteDagAssetQueuedEventExecute(r ApiDeleteDagAssetQu
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteDagAssetQueuedEventsRequest struct {
+type AssetAPIDeleteDagAssetQueuedEventsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	dagId string
 	before *string
 }
 
-func (r ApiDeleteDagAssetQueuedEventsRequest) Before(before string) ApiDeleteDagAssetQueuedEventsRequest {
+func (r AssetAPIDeleteDagAssetQueuedEventsRequest) Before(before string) AssetAPIDeleteDagAssetQueuedEventsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiDeleteDagAssetQueuedEventsRequest) Execute() (*http.Response, error) {
+func (r AssetAPIDeleteDagAssetQueuedEventsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDagAssetQueuedEventsExecute(r)
 }
 
@@ -502,10 +502,10 @@ DeleteDagAssetQueuedEvents Delete Dag Asset Queued Events
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
- @return ApiDeleteDagAssetQueuedEventsRequest
+ @return AssetAPIDeleteDagAssetQueuedEventsRequest
 */
-func (a *AssetAPIService) DeleteDagAssetQueuedEvents(ctx context.Context, dagId string) ApiDeleteDagAssetQueuedEventsRequest {
-	return ApiDeleteDagAssetQueuedEventsRequest{
+func (a *AssetAPIService) DeleteDagAssetQueuedEvents(ctx context.Context, dagId string) AssetAPIDeleteDagAssetQueuedEventsRequest {
+	return AssetAPIDeleteDagAssetQueuedEventsRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -513,7 +513,7 @@ func (a *AssetAPIService) DeleteDagAssetQueuedEvents(ctx context.Context, dagId 
 }
 
 // Execute executes the request
-func (a *AssetAPIService) DeleteDagAssetQueuedEventsExecute(r ApiDeleteDagAssetQueuedEventsRequest) (*http.Response, error) {
+func (a *AssetAPIService) DeleteDagAssetQueuedEventsExecute(r AssetAPIDeleteDagAssetQueuedEventsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -634,13 +634,13 @@ func (a *AssetAPIService) DeleteDagAssetQueuedEventsExecute(r ApiDeleteDagAssetQ
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetAssetRequest struct {
+type AssetAPIGetAssetRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	assetId int32
 }
 
-func (r ApiGetAssetRequest) Execute() (*AssetResponse, *http.Response, error) {
+func (r AssetAPIGetAssetRequest) Execute() (*AssetResponse, *http.Response, error) {
 	return r.ApiService.GetAssetExecute(r)
 }
 
@@ -651,10 +651,10 @@ Get an asset.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetId
- @return ApiGetAssetRequest
+ @return AssetAPIGetAssetRequest
 */
-func (a *AssetAPIService) GetAsset(ctx context.Context, assetId int32) ApiGetAssetRequest {
-	return ApiGetAssetRequest{
+func (a *AssetAPIService) GetAsset(ctx context.Context, assetId int32) AssetAPIGetAssetRequest {
+	return AssetAPIGetAssetRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetId: assetId,
@@ -663,7 +663,7 @@ func (a *AssetAPIService) GetAsset(ctx context.Context, assetId int32) ApiGetAss
 
 // Execute executes the request
 //  @return AssetResponse
-func (a *AssetAPIService) GetAssetExecute(r ApiGetAssetRequest) (*AssetResponse, *http.Response, error) {
+func (a *AssetAPIService) GetAssetExecute(r AssetAPIGetAssetRequest) (*AssetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -780,13 +780,13 @@ func (a *AssetAPIService) GetAssetExecute(r ApiGetAssetRequest) (*AssetResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetAliasRequest struct {
+type AssetAPIGetAssetAliasRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	assetAliasId int32
 }
 
-func (r ApiGetAssetAliasRequest) Execute() (interface{}, *http.Response, error) {
+func (r AssetAPIGetAssetAliasRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.GetAssetAliasExecute(r)
 }
 
@@ -797,10 +797,10 @@ Get an asset alias.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetAliasId
- @return ApiGetAssetAliasRequest
+ @return AssetAPIGetAssetAliasRequest
 */
-func (a *AssetAPIService) GetAssetAlias(ctx context.Context, assetAliasId int32) ApiGetAssetAliasRequest {
-	return ApiGetAssetAliasRequest{
+func (a *AssetAPIService) GetAssetAlias(ctx context.Context, assetAliasId int32) AssetAPIGetAssetAliasRequest {
+	return AssetAPIGetAssetAliasRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetAliasId: assetAliasId,
@@ -809,7 +809,7 @@ func (a *AssetAPIService) GetAssetAlias(ctx context.Context, assetAliasId int32)
 
 // Execute executes the request
 //  @return interface{}
-func (a *AssetAPIService) GetAssetAliasExecute(r ApiGetAssetAliasRequest) (interface{}, *http.Response, error) {
+func (a *AssetAPIService) GetAssetAliasExecute(r AssetAPIGetAssetAliasRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -926,7 +926,7 @@ func (a *AssetAPIService) GetAssetAliasExecute(r ApiGetAssetAliasRequest) (inter
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetAliasesRequest struct {
+type AssetAPIGetAssetAliasesRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	limit *int32
@@ -935,28 +935,28 @@ type ApiGetAssetAliasesRequest struct {
 	orderBy *string
 }
 
-func (r ApiGetAssetAliasesRequest) Limit(limit int32) ApiGetAssetAliasesRequest {
+func (r AssetAPIGetAssetAliasesRequest) Limit(limit int32) AssetAPIGetAssetAliasesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetAssetAliasesRequest) Offset(offset int32) ApiGetAssetAliasesRequest {
+func (r AssetAPIGetAssetAliasesRequest) Offset(offset int32) AssetAPIGetAssetAliasesRequest {
 	r.offset = &offset
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetAssetAliasesRequest) NamePattern(namePattern string) ApiGetAssetAliasesRequest {
+func (r AssetAPIGetAssetAliasesRequest) NamePattern(namePattern string) AssetAPIGetAssetAliasesRequest {
 	r.namePattern = &namePattern
 	return r
 }
 
-func (r ApiGetAssetAliasesRequest) OrderBy(orderBy string) ApiGetAssetAliasesRequest {
+func (r AssetAPIGetAssetAliasesRequest) OrderBy(orderBy string) AssetAPIGetAssetAliasesRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetAssetAliasesRequest) Execute() (*AssetAliasCollectionResponse, *http.Response, error) {
+func (r AssetAPIGetAssetAliasesRequest) Execute() (*AssetAliasCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetAssetAliasesExecute(r)
 }
 
@@ -966,10 +966,10 @@ GetAssetAliases Get Asset Aliases
 Get asset aliases.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAssetAliasesRequest
+ @return AssetAPIGetAssetAliasesRequest
 */
-func (a *AssetAPIService) GetAssetAliases(ctx context.Context) ApiGetAssetAliasesRequest {
-	return ApiGetAssetAliasesRequest{
+func (a *AssetAPIService) GetAssetAliases(ctx context.Context) AssetAPIGetAssetAliasesRequest {
+	return AssetAPIGetAssetAliasesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -977,7 +977,7 @@ func (a *AssetAPIService) GetAssetAliases(ctx context.Context) ApiGetAssetAliase
 
 // Execute executes the request
 //  @return AssetAliasCollectionResponse
-func (a *AssetAPIService) GetAssetAliasesExecute(r ApiGetAssetAliasesRequest) (*AssetAliasCollectionResponse, *http.Response, error) {
+func (a *AssetAPIService) GetAssetAliasesExecute(r AssetAPIGetAssetAliasesRequest) (*AssetAliasCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1114,7 +1114,7 @@ func (a *AssetAPIService) GetAssetAliasesExecute(r ApiGetAssetAliasesRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetEventsRequest struct {
+type AssetAPIGetAssetEventsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	limit *int32
@@ -1129,57 +1129,57 @@ type ApiGetAssetEventsRequest struct {
 	timestampLte *time.Time
 }
 
-func (r ApiGetAssetEventsRequest) Limit(limit int32) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) Limit(limit int32) AssetAPIGetAssetEventsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) Offset(offset int32) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) Offset(offset int32) AssetAPIGetAssetEventsRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) OrderBy(orderBy string) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) OrderBy(orderBy string) AssetAPIGetAssetEventsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) AssetId(assetId int32) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) AssetId(assetId int32) AssetAPIGetAssetEventsRequest {
 	r.assetId = &assetId
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) SourceDagId(sourceDagId string) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) SourceDagId(sourceDagId string) AssetAPIGetAssetEventsRequest {
 	r.sourceDagId = &sourceDagId
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) SourceTaskId(sourceTaskId string) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) SourceTaskId(sourceTaskId string) AssetAPIGetAssetEventsRequest {
 	r.sourceTaskId = &sourceTaskId
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) SourceRunId(sourceRunId string) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) SourceRunId(sourceRunId string) AssetAPIGetAssetEventsRequest {
 	r.sourceRunId = &sourceRunId
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) SourceMapIndex(sourceMapIndex int32) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) SourceMapIndex(sourceMapIndex int32) AssetAPIGetAssetEventsRequest {
 	r.sourceMapIndex = &sourceMapIndex
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) TimestampGte(timestampGte time.Time) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) TimestampGte(timestampGte time.Time) AssetAPIGetAssetEventsRequest {
 	r.timestampGte = &timestampGte
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) TimestampLte(timestampLte time.Time) ApiGetAssetEventsRequest {
+func (r AssetAPIGetAssetEventsRequest) TimestampLte(timestampLte time.Time) AssetAPIGetAssetEventsRequest {
 	r.timestampLte = &timestampLte
 	return r
 }
 
-func (r ApiGetAssetEventsRequest) Execute() (*AssetEventCollectionResponse, *http.Response, error) {
+func (r AssetAPIGetAssetEventsRequest) Execute() (*AssetEventCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetAssetEventsExecute(r)
 }
 
@@ -1189,10 +1189,10 @@ GetAssetEvents Get Asset Events
 Get asset events.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAssetEventsRequest
+ @return AssetAPIGetAssetEventsRequest
 */
-func (a *AssetAPIService) GetAssetEvents(ctx context.Context) ApiGetAssetEventsRequest {
-	return ApiGetAssetEventsRequest{
+func (a *AssetAPIService) GetAssetEvents(ctx context.Context) AssetAPIGetAssetEventsRequest {
+	return AssetAPIGetAssetEventsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1200,7 +1200,7 @@ func (a *AssetAPIService) GetAssetEvents(ctx context.Context) ApiGetAssetEventsR
 
 // Execute executes the request
 //  @return AssetEventCollectionResponse
-func (a *AssetAPIService) GetAssetEventsExecute(r ApiGetAssetEventsRequest) (*AssetEventCollectionResponse, *http.Response, error) {
+func (a *AssetAPIService) GetAssetEventsExecute(r AssetAPIGetAssetEventsRequest) (*AssetEventCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1355,19 +1355,19 @@ func (a *AssetAPIService) GetAssetEventsExecute(r ApiGetAssetEventsRequest) (*As
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetQueuedEventsRequest struct {
+type AssetAPIGetAssetQueuedEventsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	assetId int32
 	before *string
 }
 
-func (r ApiGetAssetQueuedEventsRequest) Before(before string) ApiGetAssetQueuedEventsRequest {
+func (r AssetAPIGetAssetQueuedEventsRequest) Before(before string) AssetAPIGetAssetQueuedEventsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiGetAssetQueuedEventsRequest) Execute() (*QueuedEventCollectionResponse, *http.Response, error) {
+func (r AssetAPIGetAssetQueuedEventsRequest) Execute() (*QueuedEventCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetAssetQueuedEventsExecute(r)
 }
 
@@ -1378,10 +1378,10 @@ Get queued asset events for an asset.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetId
- @return ApiGetAssetQueuedEventsRequest
+ @return AssetAPIGetAssetQueuedEventsRequest
 */
-func (a *AssetAPIService) GetAssetQueuedEvents(ctx context.Context, assetId int32) ApiGetAssetQueuedEventsRequest {
-	return ApiGetAssetQueuedEventsRequest{
+func (a *AssetAPIService) GetAssetQueuedEvents(ctx context.Context, assetId int32) AssetAPIGetAssetQueuedEventsRequest {
+	return AssetAPIGetAssetQueuedEventsRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetId: assetId,
@@ -1390,7 +1390,7 @@ func (a *AssetAPIService) GetAssetQueuedEvents(ctx context.Context, assetId int3
 
 // Execute executes the request
 //  @return QueuedEventCollectionResponse
-func (a *AssetAPIService) GetAssetQueuedEventsExecute(r ApiGetAssetQueuedEventsRequest) (*QueuedEventCollectionResponse, *http.Response, error) {
+func (a *AssetAPIService) GetAssetQueuedEventsExecute(r AssetAPIGetAssetQueuedEventsRequest) (*QueuedEventCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1510,7 +1510,7 @@ func (a *AssetAPIService) GetAssetQueuedEventsExecute(r ApiGetAssetQueuedEventsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetsRequest struct {
+type AssetAPIGetAssetsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	limit *int32
@@ -1522,44 +1522,44 @@ type ApiGetAssetsRequest struct {
 	orderBy *string
 }
 
-func (r ApiGetAssetsRequest) Limit(limit int32) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) Limit(limit int32) AssetAPIGetAssetsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetAssetsRequest) Offset(offset int32) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) Offset(offset int32) AssetAPIGetAssetsRequest {
 	r.offset = &offset
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetAssetsRequest) NamePattern(namePattern string) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) NamePattern(namePattern string) AssetAPIGetAssetsRequest {
 	r.namePattern = &namePattern
 	return r
 }
 
 // SQL LIKE expression — use &#x60;%&#x60; / &#x60;_&#x60; wildcards (e.g. &#x60;%customer_%&#x60;). Regular expressions are **not** supported.
-func (r ApiGetAssetsRequest) UriPattern(uriPattern string) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) UriPattern(uriPattern string) AssetAPIGetAssetsRequest {
 	r.uriPattern = &uriPattern
 	return r
 }
 
-func (r ApiGetAssetsRequest) DagIds(dagIds []*string) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) DagIds(dagIds []*string) AssetAPIGetAssetsRequest {
 	r.dagIds = &dagIds
 	return r
 }
 
-func (r ApiGetAssetsRequest) OnlyActive(onlyActive bool) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) OnlyActive(onlyActive bool) AssetAPIGetAssetsRequest {
 	r.onlyActive = &onlyActive
 	return r
 }
 
-func (r ApiGetAssetsRequest) OrderBy(orderBy string) ApiGetAssetsRequest {
+func (r AssetAPIGetAssetsRequest) OrderBy(orderBy string) AssetAPIGetAssetsRequest {
 	r.orderBy = &orderBy
 	return r
 }
 
-func (r ApiGetAssetsRequest) Execute() (*AssetCollectionResponse, *http.Response, error) {
+func (r AssetAPIGetAssetsRequest) Execute() (*AssetCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetAssetsExecute(r)
 }
 
@@ -1569,10 +1569,10 @@ GetAssets Get Assets
 Get assets.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAssetsRequest
+ @return AssetAPIGetAssetsRequest
 */
-func (a *AssetAPIService) GetAssets(ctx context.Context) ApiGetAssetsRequest {
-	return ApiGetAssetsRequest{
+func (a *AssetAPIService) GetAssets(ctx context.Context) AssetAPIGetAssetsRequest {
+	return AssetAPIGetAssetsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1580,7 +1580,7 @@ func (a *AssetAPIService) GetAssets(ctx context.Context) ApiGetAssetsRequest {
 
 // Execute executes the request
 //  @return AssetCollectionResponse
-func (a *AssetAPIService) GetAssetsExecute(r ApiGetAssetsRequest) (*AssetCollectionResponse, *http.Response, error) {
+func (a *AssetAPIService) GetAssetsExecute(r AssetAPIGetAssetsRequest) (*AssetCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1737,7 +1737,7 @@ func (a *AssetAPIService) GetAssetsExecute(r ApiGetAssetsRequest) (*AssetCollect
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetDagAssetQueuedEventRequest struct {
+type AssetAPIGetDagAssetQueuedEventRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	dagId string
@@ -1745,12 +1745,12 @@ type ApiGetDagAssetQueuedEventRequest struct {
 	before *string
 }
 
-func (r ApiGetDagAssetQueuedEventRequest) Before(before string) ApiGetDagAssetQueuedEventRequest {
+func (r AssetAPIGetDagAssetQueuedEventRequest) Before(before string) AssetAPIGetDagAssetQueuedEventRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiGetDagAssetQueuedEventRequest) Execute() (*QueuedEventResponse, *http.Response, error) {
+func (r AssetAPIGetDagAssetQueuedEventRequest) Execute() (*QueuedEventResponse, *http.Response, error) {
 	return r.ApiService.GetDagAssetQueuedEventExecute(r)
 }
 
@@ -1762,10 +1762,10 @@ Get a queued asset event for a DAG.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
  @param assetId
- @return ApiGetDagAssetQueuedEventRequest
+ @return AssetAPIGetDagAssetQueuedEventRequest
 */
-func (a *AssetAPIService) GetDagAssetQueuedEvent(ctx context.Context, dagId string, assetId int32) ApiGetDagAssetQueuedEventRequest {
-	return ApiGetDagAssetQueuedEventRequest{
+func (a *AssetAPIService) GetDagAssetQueuedEvent(ctx context.Context, dagId string, assetId int32) AssetAPIGetDagAssetQueuedEventRequest {
+	return AssetAPIGetDagAssetQueuedEventRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1775,7 +1775,7 @@ func (a *AssetAPIService) GetDagAssetQueuedEvent(ctx context.Context, dagId stri
 
 // Execute executes the request
 //  @return QueuedEventResponse
-func (a *AssetAPIService) GetDagAssetQueuedEventExecute(r ApiGetDagAssetQueuedEventRequest) (*QueuedEventResponse, *http.Response, error) {
+func (a *AssetAPIService) GetDagAssetQueuedEventExecute(r AssetAPIGetDagAssetQueuedEventRequest) (*QueuedEventResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1896,19 +1896,19 @@ func (a *AssetAPIService) GetDagAssetQueuedEventExecute(r ApiGetDagAssetQueuedEv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetDagAssetQueuedEventsRequest struct {
+type AssetAPIGetDagAssetQueuedEventsRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	dagId string
 	before *string
 }
 
-func (r ApiGetDagAssetQueuedEventsRequest) Before(before string) ApiGetDagAssetQueuedEventsRequest {
+func (r AssetAPIGetDagAssetQueuedEventsRequest) Before(before string) AssetAPIGetDagAssetQueuedEventsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiGetDagAssetQueuedEventsRequest) Execute() (*QueuedEventCollectionResponse, *http.Response, error) {
+func (r AssetAPIGetDagAssetQueuedEventsRequest) Execute() (*QueuedEventCollectionResponse, *http.Response, error) {
 	return r.ApiService.GetDagAssetQueuedEventsExecute(r)
 }
 
@@ -1919,10 +1919,10 @@ Get queued asset events for a DAG.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param dagId
- @return ApiGetDagAssetQueuedEventsRequest
+ @return AssetAPIGetDagAssetQueuedEventsRequest
 */
-func (a *AssetAPIService) GetDagAssetQueuedEvents(ctx context.Context, dagId string) ApiGetDagAssetQueuedEventsRequest {
-	return ApiGetDagAssetQueuedEventsRequest{
+func (a *AssetAPIService) GetDagAssetQueuedEvents(ctx context.Context, dagId string) AssetAPIGetDagAssetQueuedEventsRequest {
+	return AssetAPIGetDagAssetQueuedEventsRequest{
 		ApiService: a,
 		ctx: ctx,
 		dagId: dagId,
@@ -1931,7 +1931,7 @@ func (a *AssetAPIService) GetDagAssetQueuedEvents(ctx context.Context, dagId str
 
 // Execute executes the request
 //  @return QueuedEventCollectionResponse
-func (a *AssetAPIService) GetDagAssetQueuedEventsExecute(r ApiGetDagAssetQueuedEventsRequest) (*QueuedEventCollectionResponse, *http.Response, error) {
+func (a *AssetAPIService) GetDagAssetQueuedEventsExecute(r AssetAPIGetDagAssetQueuedEventsRequest) (*QueuedEventCollectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2051,13 +2051,13 @@ func (a *AssetAPIService) GetDagAssetQueuedEventsExecute(r ApiGetDagAssetQueuedE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiMaterializeAssetRequest struct {
+type AssetAPIMaterializeAssetRequest struct {
 	ctx context.Context
 	ApiService *AssetAPIService
 	assetId int32
 }
 
-func (r ApiMaterializeAssetRequest) Execute() (*DAGRunResponse, *http.Response, error) {
+func (r AssetAPIMaterializeAssetRequest) Execute() (*DAGRunResponse, *http.Response, error) {
 	return r.ApiService.MaterializeAssetExecute(r)
 }
 
@@ -2068,10 +2068,10 @@ Materialize an asset by triggering a DAG run that produces it.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetId
- @return ApiMaterializeAssetRequest
+ @return AssetAPIMaterializeAssetRequest
 */
-func (a *AssetAPIService) MaterializeAsset(ctx context.Context, assetId int32) ApiMaterializeAssetRequest {
-	return ApiMaterializeAssetRequest{
+func (a *AssetAPIService) MaterializeAsset(ctx context.Context, assetId int32) AssetAPIMaterializeAssetRequest {
+	return AssetAPIMaterializeAssetRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetId: assetId,
@@ -2080,7 +2080,7 @@ func (a *AssetAPIService) MaterializeAsset(ctx context.Context, assetId int32) A
 
 // Execute executes the request
 //  @return DAGRunResponse
-func (a *AssetAPIService) MaterializeAssetExecute(r ApiMaterializeAssetRequest) (*DAGRunResponse, *http.Response, error) {
+func (a *AssetAPIService) MaterializeAssetExecute(r AssetAPIMaterializeAssetRequest) (*DAGRunResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
